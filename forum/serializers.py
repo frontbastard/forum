@@ -24,7 +24,10 @@ class PostListSerializer(PostSerializer):
 
     class Meta:
         model = Post
-        fields = ("id", "author_name", "topic_name", "content")
+        fields = (
+            "id", "author_name", "topic_name", "content", "created_at",
+            "updated_at",
+        )
 
 
 class TopicSerializer(serializers.ModelSerializer):
