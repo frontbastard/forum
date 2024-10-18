@@ -24,10 +24,17 @@ class PostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class TopicSerializer(serializers.ModelSerializer):
-    author = UserSerializer(read_only=True)
-    posts = PostSerializer(many=True, read_only=True)
+class PostListSerializer(PostSerializer):
+    author_name = serializers.CharField(source="author", read_only=True)
+    topic_name = serializers.CharField(source="topic", read_only=True)
 
+    class Meta:
+        model = Post
+        fields = ("id", "author_name", "topic_name", "content")
+
+
+class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
         fields = "__all__"
+
