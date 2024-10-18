@@ -10,12 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ("id", "username")
 
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = "__all__"
-
-
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
 
@@ -36,5 +30,19 @@ class PostListSerializer(PostSerializer):
 class TopicSerializer(serializers.ModelSerializer):
     class Meta:
         model = Topic
+        exclude = ("category",)
+
+
+class TopicDetailSerializer(TopicSerializer):
+    author = UserSerializer(read_only=True)
+    posts = PostSerializer(many=True)
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
         fields = "__all__"
 
+
+class CategoryDetailSerializer(CategorySerializer):
+    topics = TopicSerializer(many=True, read_only=True)

@@ -6,13 +6,21 @@ from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
     PostSerializer,
-    PostListSerializer,
+    PostListSerializer, TopicDetailSerializer, CategoryDetailSerializer,
 )
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+
+        if self.action in ("retrieve",):
+            serializer_class = CategoryDetailSerializer
+
+        return serializer_class
 
 
 class TopicViewSet(viewsets.ModelViewSet):
@@ -26,6 +34,14 @@ class TopicViewSet(viewsets.ModelViewSet):
             queryset = queryset.select_related("author", "category")
 
         return queryset
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+
+        if self.action in ("retrieve",):
+            serializer_class = TopicDetailSerializer
+
+        return serializer_class
 
 
 class PostViewSet(viewsets.ModelViewSet):
