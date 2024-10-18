@@ -6,6 +6,7 @@ from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
     PostSerializer,
+    PostListSerializer,
 )
 
 
@@ -38,6 +39,14 @@ class PostViewSet(viewsets.ModelViewSet):
             queryset = queryset.select_related("author", "topic")
 
         return queryset
+
+    def get_serializer_class(self):
+        serializer_class = self.serializer_class
+
+        if self.action in ("list",):
+            serializer_class = PostListSerializer
+
+        return serializer_class
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
