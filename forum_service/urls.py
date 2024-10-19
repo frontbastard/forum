@@ -1,5 +1,5 @@
 """
-URL configuration for forum_service project.
+URL configuration for a forum_service project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -20,5 +20,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/v1/forum/", include("forum.urls", namespace="forum"))
+    path("api/v1/forum/", include("forum.urls", namespace="forum")),
+    path("api/v1/users/", include("users.urls", namespace="users")),
 ]
