@@ -1,9 +1,10 @@
-import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import axios from "axios";
-import {FORUM_API_BASE} from "../constants/api.jsx";
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+import {FORUM_API_BASE} from '../constants/api.jsx';
+import ItemDetails from '../components/ItemDetails.jsx';
 
-function TopicDetail() {
+function Topic() {
     const [topic, setTopic] = useState(null)
     const {id} = useParams()
 
@@ -17,17 +18,13 @@ function TopicDetail() {
 
     return (
         <div>
-            <h1>{topic.name}</h1>
-            <p>{topic.content}</p>
+            <ItemDetails data={topic} type="topic"/>
             <h2>Posts:</h2>
             {topic.posts.map(post => (
-                <div key={post.id}>
-                    <p>{post.content}</p>
-                    <small>By: {post.author.email}</small>
-                </div>
+                <ItemDetails key={post.id} data={post} type="post"/>
             ))}
         </div>
     )
 }
 
-export default TopicDetail
+export default Topic

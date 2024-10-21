@@ -1,9 +1,9 @@
-import {useEffect, useState} from "react";
-import {Link, useParams} from "react-router-dom";
-import axios from "axios";
-import {FORUM_API_BASE} from "../constants/api.jsx";
+import {useEffect, useState} from 'react';
+import {Link, useParams} from 'react-router-dom';
+import axios from 'axios';
+import {FORUM_API_BASE} from '../constants/api.jsx';
 
-function CategoryDetail() {
+function Category() {
     const [category, setCategory] = useState(null)
     const {id} = useParams()
 
@@ -29,4 +29,4 @@ function CategoryDetail() {
     )
 }
 
-export default CategoryDetail
+export default Category

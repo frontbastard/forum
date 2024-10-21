@@ -3,7 +3,7 @@ import axios from "axios";
 import {Link} from "react-router-dom";
 import {FORUM_API_BASE} from "../constants/api.jsx";
 
-function CategoryList () {
+function Home () {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -28,4 +28,4 @@ function CategoryList () {
     )
 }
 
-export default CategoryList
+export default Home

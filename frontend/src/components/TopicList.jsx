@@ -1,7 +1,7 @@
-import {Link, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
-import {FORUM_API_BASE} from "../constants/api.jsx";
-import axios from "axios";
+import {Link} from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {FORUM_API_BASE} from '../constants/api.jsx';
+import axios from 'axios';
 
 function TopicList() {
     const [topics, setTopics] = useState([])
