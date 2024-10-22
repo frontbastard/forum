@@ -25,6 +25,7 @@ class Topic(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        related_name="topics",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -41,6 +42,7 @@ class Post(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        related_name="posts",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -51,12 +53,15 @@ class Post(models.Model):
 
 class PostVote(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+        related_name="votes"
     )
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="votes"
     )
-    value = models.SmallIntegerField(choices=((1, "Upvote"), (-1, "Downvote")))
+    value = models.SmallIntegerField(
+        choices=((1, "Upvote"), (-1, "Downvote"))
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

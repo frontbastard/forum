@@ -11,29 +11,29 @@ class VoteSerializer(serializers.Serializer):
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
-    votes_sum = serializers.SerializerMethodField()
+    votes_sum = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Post
         fields = "__all__"
 
-    def get_votes_sum(self, obj):
-        return obj.votes.aggregate(Sum("value"))["value__sum"] or 0
-
 
 class PostListSerializer(PostSerializer):
     author_name = serializers.CharField(source="author", read_only=True)
     topic_name = serializers.CharField(source="topic", read_only=True)
+    votes_sum = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Post
         fields = (
             "id", "author_name", "topic_name", "content", "created_at",
-            "updated_at",
+            "updated_at", "votes_sum",
         )
 
 
 class TopicSerializer(serializers.ModelSerializer):
+    posts_count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Topic
         exclude = ("category",)

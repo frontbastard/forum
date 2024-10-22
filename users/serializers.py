@@ -6,9 +6,16 @@ from forum_service import settings
 
 
 class UserSerializer(serializers.ModelSerializer):
+    date_joined = serializers.DateTimeField(format="%Y-%m-%d", read_only=True)
+    topics_count = serializers.IntegerField(read_only=True)
+    posts_count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = get_user_model()
-        fields = ("id", "email", "password", "is_staff")
+        fields = (
+            "id", "email", "password", "is_staff", "date_joined",
+            "topics_count", "posts_count",
+        )
         read_only_fields = ("id", "is_staff")
         extra_kwargs = {
             "password": {

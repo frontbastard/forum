@@ -1,8 +1,8 @@
 import './App.scss'
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import Header from './components/Header.jsx';
+import HeaderComponent from './components/HeaderComponent.jsx';
 import Home from './pages/Home.jsx';
-import TopicList from './components/TopicList.jsx';
+import TopicList from './pages/TopicList.jsx';
 import Topic from './pages/Topic.jsx';
 import Category from './pages/Category.jsx';
 
@@ -10,7 +10,7 @@ function App() {
     return (
         <Router>
             <div className="wrapper">
-                <Header/>
+                <HeaderComponent/>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/category/:id" element={<Category/>}/>

@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes, {instanceOf} from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -11,12 +11,8 @@ function ContentItem({data, type}) {
                 <Avatar alt="Remy Sharp"
                         src={`https://api.dicebear.com/9.x/pixel-art/webp?seed=${data.author.email}`}/>
                 <p>{data.author.email}</p>
-                <p>
-                    Registered: dd/mm/yyyy
-                </p>
-                <p>
-                    Posts: POSTS_QTY
-                </p>
+                <p>Registered: {data.author.date_joined}</p>
+                <p>Topics: {data.author.topics_count} / Posts: {data.author.posts_count}</p>
             </aside>
             <article className="content-right">
                 <header className="content-right-header">
@@ -27,14 +23,13 @@ function ContentItem({data, type}) {
                     }
                 </header>
                 <main className="content-right-main">
-                    {data.name && <h2>{data.name}</h2>}
                     <p className="content-right-text">{data.content}</p>
-                    {data.votes_sum !== undefined && (
+                    {'votes_sum' in data && (
                         <span className="content-right-votes">
                             <Button variant="text">
                                 <ThumbUpIcon/>
                             </Button>
-                            <span>{data.votes_sum}</span>
+                            <span>{data.votes_sum || 0}</span>
                             <Button variant="text">
                                 <ThumbDownIcon/>
                             </Button>
@@ -56,6 +51,9 @@ ContentItem.propTypes = {
         votes_sum: PropTypes.number.isRequired,
         author: PropTypes.shape({
             email: PropTypes.string.isRequired,
+            date_joined: PropTypes.string.isRequired,
+            posts_count: PropTypes.number.isRequired,
+            topics_count: PropTypes.number.isRequired,
         }).isRequired,
     }).isRequired,
     type: PropTypes.oneOf(['post', 'topic']).isRequired,

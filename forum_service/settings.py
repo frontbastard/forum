@@ -151,7 +151,9 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 16,
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticatedOrReadOnly"
-    ]
+    ],
+    "DATE_FORMAT": "%d/%m/%Y",
+    "DATETIME_FORMAT": "%d/%m/%Y %H:%M",
 }
 
 

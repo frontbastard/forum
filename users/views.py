@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import generics, status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.generics import CreateAPIView
@@ -7,6 +8,7 @@ from rest_framework.settings import api_settings
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from forum_service import settings
 from users.serializers import UserSerializer, AuthTokenSerializer
 
 
@@ -39,3 +41,9 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+    def get_queryset(self):
+        return settings.AUTH_USER_MODEL.objects.annotate(
+            topics_count=Count("topics", distinct=True),
+            posts_count=Count("posts", distinct=True),
+        )

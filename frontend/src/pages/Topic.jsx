@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
 import {FORUM_API_BASE} from '../constants/api.jsx';
-import ItemDetails from '../components/ItemDetails.jsx';
+import ItemDetails from '../components/ItemDetailsComponent.jsx';
 
 function Topic() {
     const [topic, setTopic] = useState(null)
@@ -18,6 +18,7 @@ function Topic() {
 
     return (
         <div>
+            <h2>{topic.name}</h2>
             <ItemDetails data={topic} type="topic"/>
             <h2>Posts:</h2>
             {topic.posts.map(post => (

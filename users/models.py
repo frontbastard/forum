@@ -47,3 +47,11 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
+
+    @property
+    def topics_count(self):
+        return self.topics.count()
+
+    @property
+    def posts_count(self):
+        return self.posts.count()
