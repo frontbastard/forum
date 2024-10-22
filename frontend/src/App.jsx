@@ -7,19 +7,19 @@ import Topic from './pages/Topic.jsx';
 import Category from './pages/Category.jsx';
 
 function App() {
-    return (
-        <Router>
-            <div className="wrapper">
-                <HeaderComponent/>
-                <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/category/:id" element={<Category/>}/>
-                    <Route path="/topics" element={<TopicList/>}/>
-                    <Route path="/topic/:id" element={<Topic/>}/>
-                </Routes>
-            </div>
-        </Router>
-    )
+  return (
+    <Router>
+      <div className="wrapper">
+        <HeaderComponent/>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/category/:id" element={<Category/>}/>
+          <Route path="/topics" element={<TopicList/>}/>
+          <Route path="/topic/:id" element={<Topic/>}/>
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
 export default App

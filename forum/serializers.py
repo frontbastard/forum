@@ -1,4 +1,4 @@
-from django.db.models import Sum
+from django.db.models import Sum, Count
 from rest_framework import serializers
 
 from forum.models import Category, Post, Topic
@@ -44,7 +44,25 @@ class TopicDetailSerializer(TopicSerializer):
     posts = PostSerializer(many=True)
 
 
+class TopicsForCategorySerializer(serializers.ModelSerializer):
+    posts_count = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Topic
+        fields = ("id", "name", "posts_count", "created_at", "updated_at")
+
+
 class CategorySerializer(serializers.ModelSerializer):
+    topics = TopicsForCategorySerializer(many=True, read_only=True)
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        topics = instance.topics.annotate(posts_count=Count("posts"))
+        representation["topics"] = TopicsForCategorySerializer(
+            topics, many=True
+        ).data
+        return representation
+
     class Meta:
         model = Category
         fields = "__all__"
