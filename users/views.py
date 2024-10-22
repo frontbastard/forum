@@ -9,12 +9,24 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from forum_service import settings
-from users.serializers import UserSerializer, AuthTokenSerializer
+from users.serializers import (
+    UserSerializer,
+    AuthTokenSerializer,
+    UserProfileSerializer,
+)
 
 
 class CreateUserView(CreateAPIView):
     serializer_class = UserSerializer
     permission_classes = ()
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        validated_data = serializer.validated_data
+
+        return Response(validated_data, status=status.HTTP_201_CREATED)
 
 
 class LoginUserView(ObtainAuthToken):
@@ -35,8 +47,8 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
-class ManageUserView(generics.RetrieveUpdateAPIView):
-    serializer_class = UserSerializer
+class ManageUserProfileView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserProfileSerializer
     permission_classes = (IsAuthenticated,)
 
     def get_object(self):

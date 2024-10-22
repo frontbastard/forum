@@ -48,7 +48,7 @@ class UserProfileSerializer(UserSerializer):
     class Meta:
         model = get_user_model()
         fields = (
-            "id", "first_name", "last_name", "email", "posts",
+            "id", "first_name", "last_name", "email", "posts", "topics",
             "password", "password_confirm",
         )
 
