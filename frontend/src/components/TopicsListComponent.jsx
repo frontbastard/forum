@@ -17,7 +17,7 @@ function TopicsListComponent({topics}) {
       {topics.map(topic => (
         <ListItemButton
           key={topic.id}
-          sx={{pl: 4, border: '1px solid #555'}}
+          sx={{pl: 4, border: '1px solid #444'}}
           component={Link}
           to={`/topic/${topic.id}`}
         >

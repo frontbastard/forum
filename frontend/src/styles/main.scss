@@ -6,6 +6,7 @@
 .wrapper {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 .topic,
@@ -57,7 +58,7 @@
 
 .topic-content {
   background: #444;
-  border: 1px solid #999;
+  border: 1px solid #777;
 
   .content-left {
     background: #555;

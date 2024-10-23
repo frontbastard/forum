@@ -28,7 +28,7 @@ function CategoriesListComponent({categories}) {
         <React.Fragment key={category.id}>
           <ListItemButton
             onClick={() => handleClick(category.id)}
-            sx={{border: '1px solid #555', backgroundColor: '#333'}}
+            sx={{border: '1px solid #444', backgroundColor: '#333'}}
           >
             <ListItemIcon>
               <StarIcon sx={{color: '#bbb'}}/>
