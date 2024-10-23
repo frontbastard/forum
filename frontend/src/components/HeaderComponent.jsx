@@ -3,6 +3,7 @@ import {AppBar, Box, Toolbar, Typography} from '@mui/material';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import Button from '@mui/material/Button';
 import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 
 function HeaderComponent() {
   const [isAuth, setIsAuth] = useState(false)
@@ -19,8 +20,9 @@ function HeaderComponent() {
         <Toolbar>
           <Typography
             variant="h5"
-            component="a"
-            noWrap href="/"
+            component={Link}
+            noWrap
+            to="/"
             sx={{
               mr: 2,
               display: {xs: 'flex'},

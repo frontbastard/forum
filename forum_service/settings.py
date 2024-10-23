@@ -33,6 +33,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://0.0.0.0",
 ]
 SESSION_COOKIE_SECURE = False
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -160,8 +161,8 @@ REST_FRAMEWORK = {
 
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=3),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ACCESS_TOKEN_LIFETIME": timedelta(seconds=5),
+    "REFRESH_TOKEN_LIFETIME": timedelta(seconds=10),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
 }
