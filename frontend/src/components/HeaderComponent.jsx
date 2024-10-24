@@ -2,17 +2,12 @@ import {grey} from '@mui/material/colors';
 import {AppBar, Box, Toolbar, Typography} from '@mui/material';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import Button from '@mui/material/Button';
-import {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
+import {useUser} from '../providers/UserContext.jsx';
+import Avatar from '@mui/material/Avatar';
 
 function HeaderComponent() {
-  const [isAuth, setIsAuth] = useState(false)
-
-  useEffect(() => {
-    if (localStorage.getItem('access') !== null) {
-      setIsAuth(true)
-    }
-  }, [isAuth]);
+  const [user] = useUser(false)
 
   return (
     <Box sx={{flexGrow: 1}}>
@@ -36,8 +31,18 @@ function HeaderComponent() {
             <ChatBubbleOutlineIcon sx={{mr: 1, mt: '4px'}}/>
             Forum
           </Typography>
-          {isAuth ?
-            <Button color="inherit" href="/logout">Logout</Button> :
+          {user ? (
+              <>
+                <Avatar
+                  component={Link}
+                  to="/profile"
+                  alt="Remy Sharp"
+                  src={`https://api.dicebear.com/9.x/pixel-art/webp?seed=${user.email}`}
+                  sx={{mr: 1}}
+                />
+                <Button color="inherit" href="/logout">Logout</Button>
+              </>
+            ) :
             <Button color="inherit" href="/login">Login</Button>
           }
         </Toolbar>

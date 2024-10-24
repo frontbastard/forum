@@ -1,23 +1,11 @@
-import {useEffect, useState} from 'react';
-import api from '../interceptors/api.js';
 import {Grid, Paper, Typography} from '@mui/material';
 import SimpleListComponent from '../components/SimpleListComponent.jsx';
+import {useUser} from '../providers/UserContext.jsx';
 
 const UserProfile = () => {
-  const [profile, setProfile] = useState(null);
+  const [profile] = useUser(null);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await api.get('/users/me/');
-        setProfile(response.data);
-      } catch (error) {
-        console.error('Error fetching profile', error);
-      }
-    };
 
-    fetchProfile();
-  }, []);
 
   if (!profile) {
     return <div>Loading...</div>;
