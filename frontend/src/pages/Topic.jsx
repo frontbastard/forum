@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import {FORUM_API_BASE} from '../constants/api.jsx';
+import {API_BASE} from '../constants/api.jsx';
 import ItemDetails from '../components/ItemDetailsComponent.jsx';
 
 function Topic() {
@@ -9,7 +9,7 @@ function Topic() {
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`${FORUM_API_BASE}/topics/${id}/`)
+    axios.get(`${API_BASE}/forum/topics/${id}/`)
       .then(response => setTopic(response.data))
       .catch(error => console.error('Error fetching topic:', error))
   }, [id])

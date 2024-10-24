@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
-import {FORUM_API_BASE} from '../constants/api.jsx';
+import {API_BASE} from '../constants/api.jsx';
 
 function Category() {
   const [category, setCategory] = useState(null)
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`${FORUM_API_BASE}/categories/${id}`)
+    axios.get(`${API_BASE}/forum/categories/${id}`)
       .then(response => setCategory(response.data))
       .catch(error => console.error('Error fetching category:', error))
   }, [id]);

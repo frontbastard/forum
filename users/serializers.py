@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, get_user_model
 from django.utils.translation import gettext as _
 from rest_framework import serializers
 
+from forum.models import Topic, Post
 from forum_service import settings
 
 
@@ -44,13 +45,35 @@ class UserSerializer(serializers.ModelSerializer):
             return user
 
 
+class TopicSimpleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Topic
+        fields = ("id", "name")
+
+
+class PostSimpleSerializer(serializers.ModelSerializer):
+    short_content = serializers.SerializerMethodField(read_only=True)
+    topic_id = serializers.PrimaryKeyRelatedField(
+        source="topic", read_only=True
+    )
+
+    class Meta:
+        model = Post
+        fields = ("id", "short_content", "topic_id")
+
+    def get_short_content(self, obj):
+        return obj.content[:50] + "..." if len(
+            obj.content
+        ) > 50 else obj.content
+
+
 class UserProfileSerializer(UserSerializer):
+    topics = TopicSimpleSerializer(many=True, read_only=True)
+    posts = PostSimpleSerializer(many=True, read_only=True)
+
     class Meta:
         model = get_user_model()
-        fields = (
-            "id", "first_name", "last_name", "email", "posts", "topics",
-            "password", "password_confirm",
-        )
+        fields = ("id", "first_name", "last_name", "email", "posts", "topics")
 
 
 class AuthTokenSerializer(serializers.Serializer):

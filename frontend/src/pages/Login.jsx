@@ -1,41 +1,34 @@
-import {useState} from 'react';
-import axios from 'axios';
-import {USERS_API_BASE} from '../constants/api.jsx';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import {Link} from 'react-router-dom';
-import {Box, Container, Paper, TextField} from '@mui/material';
+import {useState} from 'react'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import {Link} from 'react-router-dom'
+import {Box, Container, Paper, TextField} from '@mui/material'
+import api from '../interceptors/api.js'
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const submit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const user = {
       email,
       password,
-    };
+    }
 
     try {
-      const {data} = await axios.post(`${USERS_API_BASE}/token/`, user, {
-        headers: {'Content-Type': 'application/json'},
-        withCredentials: true,
-      });
+      const response = await api.post('/users/token/', user)
+      const {access, refresh} = response.data
 
-      localStorage.clear();
-      localStorage.setItem('access_token', data.access);
-      localStorage.setItem('refresh_token', data.refresh);
+      localStorage.setItem('access', access)
+      localStorage.setItem('refresh', refresh)
 
-      axios.defaults.headers.common['Authorization'] = `Bearer ${data['access']}`;
-
-      window.location.href = '/';
+      window.location.href = '/'
     } catch (error) {
-      console.error('Login error:', error);
-      // Handle login error (e.g., show error message to user)
+      console.error('Login error:', error)
     }
-  };
+  }
 
   return (
     <Container maxWidth="sm">
@@ -79,4 +72,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default Login

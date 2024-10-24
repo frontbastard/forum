@@ -9,7 +9,8 @@ import TopicList from './pages/TopicList.jsx';
 import Topic from './pages/Topic.jsx';
 import Category from './pages/Category.jsx';
 import Login from './pages/Login.jsx';
-import {Logout} from "./pages/Logout.jsx";
+import {Logout} from './pages/Logout.jsx';
+import Profile from './pages/Profile.jsx';
 
 const darkTheme = createTheme({
   palette: {
@@ -31,9 +32,10 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/logout" element={<Logout/>}/>
+            <Route path="/profile" element={<Profile/>}/>
             <Route path="/category/:id" element={<Category/>}/>
             <Route path="/topics" element={<TopicList/>}/>
-            <Route path="/topic/:id" element={<Topic/>}/>
+            <Route path="/topics/:id" element={<Topic/>}/>
           </Routes>
         </div>
       </Router>

@@ -1,31 +1,26 @@
-import { useEffect } from 'react'
-import axios from 'axios'
+import {useEffect} from 'react'
+import api from '../interceptors/api.js';
 
 export const Logout = () => {
   useEffect(() => {
     const logout = async () => {
       try {
-        await axios.post(
-          'http://localhost:8000/logout/',
-          {
-            refresh_token: localStorage.getItem('refresh_token')
-          },
-          {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true
-          }
-        )
-
-        localStorage.clear()
-        delete axios.defaults.headers.common['Authorization']
-        window.location.href = '/login'
+        await api.post('users/token/logout/')
       } catch (e) {
         console.log('Logout failed', e)
+      } finally {
+        localStorage.removeItem('access')
+        localStorage.removeItem('refresh')
+        window.location.href = '/login'
       }
     }
 
     logout()
   }, [])
 
-  return <div></div>
+  return (
+    <div>
+      <p>Logging out...</p>
+    </div>
+  )
 }

@@ -9,7 +9,7 @@ function HeaderComponent() {
   const [isAuth, setIsAuth] = useState(false)
 
   useEffect(() => {
-    if (localStorage.getItem('access_token') !== null) {
+    if (localStorage.getItem('access') !== null) {
       setIsAuth(true)
     }
   }, [isAuth]);

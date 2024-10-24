@@ -19,7 +19,7 @@ function TopicsListComponent({topics}) {
           key={topic.id}
           sx={{pl: 4, border: '1px solid #444'}}
           component={Link}
-          to={`/topic/${topic.id}`}
+          to={`/topics/${topic.id}`}
         >
           <ListItemIcon>
             <TopicIcon sx={{color: '#bbb'}}/>
