@@ -16,14 +16,7 @@ function SimpleListComponent({items, uriPath, idField, textField}) {
       {items.map((item) => (
         <ListItem key={item.id} sx={{alignItems: 'flex-start'}}>
           <TopicIcon sx={{mr: 1, color: '#bbb'}}/>
-          <Link
-            to={`${uriPath}/${item[idField]}`}
-            style={{
-              color: '#ccc'
-            }}
-          >
-            {item[textField]}
-          </Link>
+          <Link to={`${uriPath}/${item[idField]}`}>{item[textField]}</Link>
         </ListItem>
       ))}
     </List>

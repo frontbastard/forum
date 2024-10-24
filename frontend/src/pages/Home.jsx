@@ -1,14 +1,13 @@
-import {useState, useEffect} from 'react';
-import axios from 'axios';
-import {API_BASE} from '../constants/api.jsx';
+import {useState, useEffect} from 'react'
 import CategoriesListComponent
-  from '../components/CategoriesListComponent.jsx';
+  from '../components/CategoriesListComponent.jsx'
+import api from '../interceptors/api.js'
 
 function Home() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    axios.get(`${API_BASE}/forum/categories/`)
+    api.get('/forum/categories/')
       .then(response => setCategories(response.data.results))
       .catch(error => console.error('Error fetching categories:', error))
   }, [])

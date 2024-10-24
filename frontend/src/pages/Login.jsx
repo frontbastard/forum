@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import {Link} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
-import api from '../interceptors/api.js'
+import api, {setAccessToken, setRefreshToken} from '../interceptors/api.js'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -21,8 +21,8 @@ function Login() {
       const response = await api.post('/users/token/', user)
       const {access, refresh} = response.data
 
-      localStorage.setItem('access', access)
-      localStorage.setItem('refresh', refresh)
+      setAccessToken(access)
+      setRefreshToken(refresh)
 
       window.location.href = '/'
     } catch (error) {
@@ -34,7 +34,7 @@ function Login() {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
-          <b>Welcome!</b>
+          <b>Login</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
           Sign in to continue.
@@ -47,6 +47,7 @@ function Login() {
             margin="normal"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <TextField
             label="Password"
@@ -56,6 +57,7 @@ function Login() {
             margin="normal"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <Box mt={2} display="flex" justifyContent="center">
             <Button type="submit" variant="contained" color="primary" size="large">
@@ -64,8 +66,7 @@ function Login() {
           </Box>
         </form>
         <Typography variant="body2" sx={{ mt: 2, textAlign: 'center' }}>
-          Do not have an account?{' '}
-          <Link href="/sign-up">Sign up</Link>
+          Do not have an account? <Link to="/register">Sign up</Link>
         </Typography>
       </Paper>
     </Container>

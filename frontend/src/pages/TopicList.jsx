@@ -1,16 +1,15 @@
-import {Link} from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import {API_BASE} from '../constants/api.jsx';
-import axios from 'axios';
+import {Link} from 'react-router-dom'
+import {useEffect, useState} from 'react'
+import api from '../interceptors/api.js';
 
 function TopicList() {
   const [topics, setTopics] = useState([])
 
   useEffect(() => {
-    axios.get(`${API_BASE}/forum/topics/`)
+    api.get('/forum/topics/')
       .then(response => setTopics(response.data.results))
       .catch(error => console.error('Error fetching topics:', error))
-  }, []);
+  }, [])
 
   if (!topics.length) return <p>Loading topics...</p>
 

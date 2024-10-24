@@ -1,15 +1,14 @@
-import {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import axios from 'axios';
-import {API_BASE} from '../constants/api.jsx';
-import ItemDetails from '../components/ItemDetailsComponent.jsx';
+import {useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
+import ItemDetails from '../components/ItemDetailsComponent.jsx'
+import api from '../interceptors/api.js';
 
 function Topic() {
   const [topic, setTopic] = useState(null)
   const {id} = useParams()
 
   useEffect(() => {
-    axios.get(`${API_BASE}/forum/topics/${id}/`)
+    api.get(`/forum/topics/${id}/`)
       .then(response => setTopic(response.data))
       .catch(error => console.error('Error fetching topic:', error))
   }, [id])

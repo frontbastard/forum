@@ -1,14 +1,12 @@
-import {Grid, Paper, Typography} from '@mui/material';
-import SimpleListComponent from '../components/SimpleListComponent.jsx';
-import {useUser} from '../providers/UserContext.jsx';
+import {Grid, Paper, Typography} from '@mui/material'
+import SimpleListComponent from '../components/SimpleListComponent.jsx'
+import {useUser} from '../providers/UserContext.jsx'
 
 const UserProfile = () => {
-  const [profile] = useUser(null);
-
-
+  const [profile] = useUser(null)
 
   if (!profile) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   return (
@@ -46,7 +44,7 @@ const UserProfile = () => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default UserProfile;
+export default UserProfile
