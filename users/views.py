@@ -12,21 +12,31 @@ from forum_service import settings
 from users.serializers import (
     UserSerializer,
     AuthTokenSerializer,
-    UserProfileSerializer,
+    UserProfileSerializer, UserRegistrationSerializer,
 )
 
 
 class CreateUserView(CreateAPIView):
-    serializer_class = UserSerializer
+    serializer_class = UserRegistrationSerializer
     permission_classes = ()
 
-    def post(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        refresh = RefreshToken.for_user(user)
 
-        validated_data = serializer.validated_data
+        user_serializer = UserProfileSerializer(user)
+        user_data = user_serializer.data
 
-        return Response(validated_data, status=status.HTTP_201_CREATED)
+        return Response(
+            data={
+                "refresh": str(refresh),
+                "access": str(refresh.access_token),
+                "user": user_data,
+            },
+            status=status.HTTP_201_CREATED
+        )
 
 
 class LoginUserView(ObtainAuthToken):

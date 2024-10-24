@@ -14,9 +14,16 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
         fields = (
-            "id", "email", "password", "is_staff", "date_joined",
-            "topics_count", "posts_count",
+            "id", "email", "is_staff", "date_joined", "topics_count",
+            "posts_count",
         )
+        read_only_fields = ("id", "is_staff")
+
+
+class UserRegistrationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ("email", "password", "is_staff", "first_name", "last_name")
         read_only_fields = ("id", "is_staff")
         extra_kwargs = {
             "password": {
@@ -73,7 +80,10 @@ class UserProfileSerializer(UserSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = ("id", "first_name", "last_name", "email", "posts", "topics")
+        fields = (
+            "id", "is_staff", "first_name", "last_name", "email",
+            "posts", "topics",
+        )
 
 
 class AuthTokenSerializer(serializers.Serializer):

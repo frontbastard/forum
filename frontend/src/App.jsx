@@ -12,6 +12,7 @@ import Login from './pages/Login.jsx'
 import {Logout} from './pages/Logout.jsx'
 import Profile from './pages/Profile.jsx'
 import {UserProvider} from './providers/UserContext.jsx'
+import Register from './pages/Register.jsx'
 
 const darkTheme = createTheme({
   palette: {
@@ -33,6 +34,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
+              <Route path="/register" element={<Register/>}/>
               <Route path="/logout" element={<Logout/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/category/:id" element={<Category/>}/>
