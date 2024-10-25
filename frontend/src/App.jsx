@@ -13,6 +13,7 @@ import {Logout} from './pages/Logout.jsx'
 import Profile from './pages/Profile.jsx'
 import {UserProvider} from './providers/UserContext.jsx'
 import Register from './pages/Register.jsx'
+import {Container} from '@mui/material';
 
 const darkTheme = createTheme({
   palette: {
@@ -31,7 +32,8 @@ function App() {
         <Router>
           <div className="wrapper">
             <HeaderComponent/>
-            <Routes>
+            <Container>
+              <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/register" element={<Register/>}/>
@@ -41,6 +43,7 @@ function App() {
               <Route path="/topics" element={<TopicList/>}/>
               <Route path="/topics/:id" element={<Topic/>}/>
             </Routes>
+            </Container>
           </div>
         </Router>
       </UserProvider>
