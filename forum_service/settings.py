@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     "corsheaders",
+    "drf_spectacular",
     "forum.apps.ForumConfig",
     "users.apps.UsersConfig",
 ]
@@ -157,6 +158,7 @@ REST_FRAMEWORK = {
     ],
     "DATE_FORMAT": "%d/%m/%Y",
     "DATETIME_FORMAT": "%d/%m/%Y %H:%M",
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 
@@ -165,4 +167,18 @@ SIMPLE_JWT = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=90),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
+}
+
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Forum API",
+    "DESCRIPTION": "API for a forum",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "defaultModelRendering": "model",
+        "defaultModelsExpandDepth": 2,
+        "defaultModelExpandDepth": 2,
+    },
 }
