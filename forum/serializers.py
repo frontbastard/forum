@@ -6,7 +6,7 @@ from users.serializers import UserSerializer
 
 
 class VoteSerializer(serializers.Serializer):
-    value = serializers.IntegerField(min_value=-1, max_value=1)
+    vote_value = serializers.IntegerField(min_value=-1, max_value=1)
 
 
 class PostSerializer(serializers.ModelSerializer):

@@ -4,7 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from forum.models import Category, Topic, Post
+from forum.models import Category, Topic, Post, PostVote
 from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
@@ -91,7 +91,8 @@ class PostViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=["POST"])
     def vote(self, request, pk=None):
-        obj = get_object_or_404(self.queryset, pk=pk)
+        post = get_object_or_404(Post, pk=pk)
+        user = request.user
 
         try:
             vote_value = int(request.data.get("vote_value"))
@@ -103,7 +104,13 @@ class PostViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-        obj.rating = F("rating") + vote_value
-        obj.save()
+        post_vote, created = PostVote.objects.update_or_create(
+            user=user, post=post, defaults={"value": vote_value}
+        )
 
-        return Response({"status": "Vote applied", "value": vote_value})
+        if not created:
+            if post_vote.value == vote_value:
+                post_vote.delete()
+
+        total_votes = post.votes.aggregate(total=Sum("value"))["total"] or 0
+        return Response({"status": "Vote applied", "value": total_votes})

@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import VotesComponent from './VotesComponent.jsx';
 
-function ContentItem({items, type}) {
+function ItemDetailsComponent({items, type}) {
   return (
     <section className={`${type}-content`} id={`${type}-${items.id}`}>
       <aside className="content-left">
@@ -26,15 +24,7 @@ function ContentItem({items, type}) {
         <main className="content-right-main">
           <p className="content-right-text">{items.content}</p>
           {'votes_sum' in items && (
-            <span className="content-right-votes">
-              <Button variant="text">
-                <ThumbUpIcon/>
-              </Button>
-              <span>{items.votes_sum || 0}</span>
-              <Button variant="text">
-                <ThumbDownIcon/>
-              </Button>
-            </span>
+            <VotesComponent id={items.id} votes_sum={items.votes_sum}/>
           )}
         </main>
       </article>
@@ -42,7 +32,7 @@ function ContentItem({items, type}) {
   )
 }
 
-ContentItem.propTypes = {
+ItemDetailsComponent.propTypes = {
   items: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string,
@@ -60,4 +50,4 @@ ContentItem.propTypes = {
   type: PropTypes.oneOf(['post', 'topic']).isRequired,
 };
 
-export default ContentItem
+export default ItemDetailsComponent

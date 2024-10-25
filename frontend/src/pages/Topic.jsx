@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import ItemDetails from '../components/ItemDetailsComponent.jsx'
+import ItemDetailsComponent from '../components/ItemDetailsComponent.jsx'
 import api from '../interceptors/api.js';
 
 function Topic() {
@@ -18,10 +18,10 @@ function Topic() {
   return (
     <div>
       <h2>{topic.name}</h2>
-      <ItemDetails items={topic} type="topic"/>
+      <ItemDetailsComponent items={topic} type="topic"/>
       <h2>Posts:</h2>
       {topic.posts.map(post => (
-        <ItemDetails key={post.id} items={post} type="post"/>
+        <ItemDetailsComponent key={post.id} items={post} type="post"/>
       ))}
     </div>
   )
