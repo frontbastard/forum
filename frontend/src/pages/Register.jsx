@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import {Link} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
-import api, {setAccessToken, setRefreshToken} from '../interceptors/api.js'
+import api, {setAccessToken} from '../interceptors/api.js'
 
 function Register() {
   const [firstName, setFirstName] = useState('')
@@ -32,10 +32,9 @@ function Register() {
 
     try {
       const response = await api.post('/users/register/', user)
-      const {access, refresh} = response.data
+      const {access} = response.data
 
       setAccessToken(access)
-      setRefreshToken(refresh)
 
       window.location.href = '/'
     } catch (error) {

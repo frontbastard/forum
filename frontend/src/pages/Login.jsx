@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import {Link} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
-import api, {setAccessToken, setRefreshToken} from '../interceptors/api.js'
+import api from '../interceptors/api.js'
 
 function Login() {
   const [email, setEmail] = useState('')
@@ -18,12 +18,7 @@ function Login() {
     }
 
     try {
-      const response = await api.post('/users/token/', user)
-      const {access, refresh} = response.data
-
-      setAccessToken(access)
-      setRefreshToken(refresh)
-
+      await api.post('/users/token/', user)
       window.location.href = '/'
     } catch (error) {
       console.error('Login error:', error)
