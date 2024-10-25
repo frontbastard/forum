@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from forum.models import Category, Topic, Post, PostVote
+from forum.models import Category, Topic, Post, PostLike
 
 
 @admin.register(Category)
@@ -20,6 +20,6 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ("id", "topic", "content", "author", "created_at")
 
 
-@admin.register(PostVote)
-class PostVoteAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "post", "value", "created_at")
+@admin.register(PostLike)
+class PostLikeAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "post", "created_at")

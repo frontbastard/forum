@@ -5,13 +5,12 @@ from forum.models import Category, Post, Topic
 from users.serializers import UserSerializer
 
 
-class VoteSerializer(serializers.Serializer):
-    vote_value = serializers.IntegerField(min_value=-1, max_value=1)
-
-
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
-    votes_sum = serializers.IntegerField(read_only=True)
+    likes = serializers.SerializerMethodField()
+
+    def get_likes(self, obj):
+        return obj.likes.count()
 
     class Meta:
         model = Post
@@ -21,13 +20,12 @@ class PostSerializer(serializers.ModelSerializer):
 class PostListSerializer(PostSerializer):
     author_name = serializers.CharField(source="author", read_only=True)
     topic_name = serializers.CharField(source="topic", read_only=True)
-    votes_sum = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Post
         fields = (
             "id", "author_name", "topic_name", "content", "created_at",
-            "updated_at", "votes_sum",
+            "updated_at", "likes",
         )
 
 
@@ -41,7 +39,7 @@ class TopicSerializer(serializers.ModelSerializer):
 
 class TopicDetailSerializer(TopicSerializer):
     author = UserSerializer(read_only=True)
-    posts = PostSerializer(many=True)
+    posts = PostSerializer(many=True, read_only=True)
 
 
 class TopicsForCategorySerializer(serializers.ModelSerializer):

@@ -1,16 +1,18 @@
+from django.db import transaction
 from django.db.models import F, Sum, Count
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from forum.models import Category, Topic, Post, PostVote
+from forum.models import Category, Topic, Post, PostLike
 from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
     PostSerializer,
-    PostListSerializer, TopicDetailSerializer, CategoryDetailSerializer,
-    VoteSerializer,
+    PostListSerializer,
+    TopicDetailSerializer,
+    CategoryDetailSerializer,
 )
 
 
@@ -56,10 +58,10 @@ class TopicViewSet(viewsets.ModelViewSet):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
         data = serializer.data
-        posts = instance.posts.annotate(votes_sum=Sum("votes__value"))
-        data["posts"] = PostSerializer(posts, many=True).data
+
         data["author"]["topics_count"] = instance.author_topics_count
         data["author"]["posts_count"] = instance.author_posts_count
+
         return Response(data)
 
 
@@ -81,36 +83,22 @@ class PostViewSet(viewsets.ModelViewSet):
         if self.action in ("list",):
             serializer_class = PostListSerializer
 
-        if self.action in ("vote",):
-            serializer_class = VoteSerializer
-
         return serializer_class
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
     @action(detail=True, methods=["POST"])
-    def vote(self, request, pk=None):
+    def like(self, request, pk=None):
         post = get_object_or_404(Post, pk=pk)
         user = request.user
 
-        try:
-            vote_value = int(request.data.get("vote_value"))
-            if vote_value not in (1, -1):
-                raise ValueError
-        except (ValueError, TypeError):
-            return Response(
-                {"error": "Vote value must either be 1 or -1"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        with transaction.atomic():
+            if PostLike.objects.filter(user=user, post=post).exists():
+                PostLike.objects.filter(user=user, post=post).delete()
+            else:
+                PostLike.objects.create(user=user, post=post)
 
-        post_vote, created = PostVote.objects.update_or_create(
-            user=user, post=post, defaults={"value": vote_value}
-        )
+            total_likes = PostLike.objects.filter(post=post).count()
 
-        if not created:
-            if post_vote.value == vote_value:
-                post_vote.delete()
-
-        total_votes = post.votes.aggregate(total=Sum("value"))["total"] or 0
-        return Response({"status": "Vote applied", "value": total_votes})
+        return Response({"status": "Vote applied", "likes": total_likes})

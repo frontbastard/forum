@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
-import VotesComponent from './VotesComponent.jsx';
+import LikesComponent from './LikesComponent.jsx';
 
 function ItemDetailsComponent({items, type}) {
   return (
@@ -23,8 +23,8 @@ function ItemDetailsComponent({items, type}) {
         </header>
         <main className="content-right-main">
           <p className="content-right-text">{items.content}</p>
-          {'votes_sum' in items && (
-            <VotesComponent id={items.id} votes_sum={items.votes_sum}/>
+          {'likes' in items && (
+            <LikesComponent id={items.id} likesCount={items.likes}/>
           )}
         </main>
       </article>
@@ -39,7 +39,7 @@ ItemDetailsComponent.propTypes = {
     content: PropTypes.string.isRequired,
     created_at: PropTypes.string.isRequired,
     updated_at: PropTypes.string.isRequired,
-    votes_sum: PropTypes.number,
+    likes: PropTypes.number,
     author: PropTypes.shape({
       email: PropTypes.string.isRequired,
       date_joined: PropTypes.string.isRequired,
