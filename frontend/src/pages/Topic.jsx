@@ -59,8 +59,10 @@ function Topic() {
           required
         />
         <Box mt={2} display="flex" justifyContent="center">
-          <Button type="submit" variant="contained" color="primary"
-                  size="large">
+          <Button
+            type="submit" variant="contained" color="primary"
+            size="large"
+          >
             Create Post
           </Button>
         </Box>

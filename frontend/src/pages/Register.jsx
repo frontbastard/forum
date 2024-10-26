@@ -100,8 +100,10 @@ function Register() {
           />
           {error && <Typography color="error">{error}</Typography>}
           <Box mt={2} display="flex" justifyContent="center">
-            <Button type="submit" variant="contained" color="primary"
-                    size="large">
+            <Button
+              type="submit" variant="contained" color="primary"
+              size="large"
+            >
               Register
             </Button>
           </Box>

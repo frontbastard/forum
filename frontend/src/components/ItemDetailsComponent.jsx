@@ -17,8 +17,10 @@ function ItemDetailsComponent({item, type}) {
       }}
     >
       <aside className="content-left">
-        <Avatar alt="Remy Sharp"
-                src={`https://api.dicebear.com/9.x/pixel-art/webp?seed=${item.author.email}`}/>
+        <Avatar
+          alt="Remy Sharp"
+          src={`https://api.dicebear.com/9.x/pixel-art/webp?seed=${item.author.email}`}
+        />
         <p>{item.author.email}</p>
         <p>Registered: {item.author.date_joined}</p>
         <p>Topics: {item.author.topics_count} /

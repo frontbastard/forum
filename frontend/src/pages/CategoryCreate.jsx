@@ -56,7 +56,7 @@ function CategoryCreate() {
           />
           <Box mt={2} display="flex" justifyContent="center">
             <Button type="submit" variant="contained" color="primary" size="large">
-              Create
+              Create Category
             </Button>
           </Box>
         </form>

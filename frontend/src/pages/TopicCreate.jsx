@@ -32,7 +32,7 @@ function TopicCreate() {
 
   return (
     <Container maxWidth="sm">
-      <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
+      <Paper elevation={3} sx={{padding: 4, marginTop: 8}}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
           <b>Add Topic</b>
         </Typography>
@@ -61,8 +61,11 @@ function TopicCreate() {
             required
           />
           <Box mt={2} display="flex" justifyContent="center">
-            <Button type="submit" variant="contained" color="primary" size="large">
-              Create
+            <Button
+              type="submit" variant="contained" color="primary"
+              size="large"
+            >
+              Create Topic
             </Button>
           </Box>
         </form>
