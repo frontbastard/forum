@@ -1,16 +1,25 @@
 from django.db.models import Sum, Count
 from rest_framework import serializers
 
-from forum.models import Category, Post, Topic
+from forum.models import Category, Post, Topic, PostLike
 from users.serializers import UserSerializer
 
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     likes = serializers.SerializerMethodField()
+    current_user_liked = serializers.SerializerMethodField()
 
     def get_likes(self, obj):
         return obj.likes.count()
+
+    def get_current_user_liked(self, obj):
+        request = self.context.get('request')
+        if request and request.user.is_authenticated:
+            return PostLike.objects.filter(
+                user=request.user, post=obj
+            ).exists()
+        return False
 
     class Meta:
         model = Post

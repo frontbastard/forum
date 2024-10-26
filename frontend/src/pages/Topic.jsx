@@ -18,10 +18,10 @@ function Topic() {
   return (
     <div>
       <h2>{topic.name}</h2>
-      <ItemDetailsComponent items={topic} type="topic"/>
+      <ItemDetailsComponent item={topic} type="topic"/>
       <h2>Posts:</h2>
       {topic.posts.map(post => (
-        <ItemDetailsComponent key={post.id} items={post} type="post"/>
+        <ItemDetailsComponent key={post.id} item={post} type="post"/>
       ))}
     </div>
   )
