@@ -4,13 +4,13 @@ import api from '../interceptors/api.js';
 
 function Category() {
   const [category, setCategory] = useState(null)
-  const {id} = useParams()
+  const {categoryId} = useParams()
 
   useEffect(() => {
-    api.get(`/forum/categories/${id}`)
+    api.get(`/forum/categories/${categoryId}`)
       .then(response => setCategory(response.data))
       .catch(error => console.error('Error fetching category:', error))
-  }, [id]);
+  }, [categoryId]);
 
   if (!category) return <p>Loading category...</p>
 

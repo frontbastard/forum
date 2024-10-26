@@ -6,7 +6,6 @@ import ListItemText from '@mui/material/ListItemText'
 import {Box, Collapse, ListItemIcon} from '@mui/material';
 import {Add, ExpandLess, ExpandMore} from '@mui/icons-material';
 import TopicsListComponent from './TopicsListComponent.jsx';
-import EditIcon from '@mui/icons-material/Edit';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
@@ -36,16 +35,17 @@ function CategoriesListComponent({categories}) {
               sx={{border: '1px solid #444', backgroundColor: '#333'}}
             >
               <ListItemIcon>
-                <StarIcon sx={{color: '#bbb'}}/>
+                <StarIcon color="#bbb"/>
               </ListItemIcon>
               <ListItemText primary={category.name} secondary={category.description}/>
 
               <ListItemButton
-                sx={{flexGrow: 'initial'}}
+                sx={{flexGrow: 'initial', mr: 1}}
                 component={Link}
                 to={user ? `/topic-create/${category.id}` : '/login'}
               >
-                <Add sx={{color: '#bbb'}}/>
+                <Add color='#bbb' sx={{mr: 1}}/>
+                <ListItemText>Add topic</ListItemText>
               </ListItemButton>
               {openCategories[category.id] ? <ExpandLess/> : <ExpandMore/>}
             </ListItemButton>

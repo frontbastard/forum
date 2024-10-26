@@ -2,8 +2,12 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import LikesComponent from './LikesComponent.jsx';
 import {Box} from '@mui/material';
+import {useUser} from '../providers/UserContext.jsx';
+import {Delete} from '@mui/icons-material';
 
-function ItemDetailsComponent({item, type}) {
+function ItemDetailsComponent({item, type, onDelete}) {
+  const [user] = useUser()
+
   return (
     <Box
       component="section"
@@ -33,20 +37,29 @@ function ItemDetailsComponent({item, type}) {
               item.created_at :
               item.updated_at
           }
-        </header>
-        <main className="content-right-main">
-          <p className="content-right-text">{item.content}</p>
-          {'likes' in item && (
-            <LikesComponent
-              id={item.id}
-              likesCount={item.likes}
-              isUserLiked={item.current_user_liked}
+
+
+          {user && (
+            <Delete
+              fontSize='medium'
+              sx={{cursor: 'pointer'}}
+              onClick={onDelete}
             />
-          )}
-        </main>
-      </article>
-    </Box>
-  )
+        )}
+      </header>
+      <main className="content-right-main">
+        <p className="content-right-text">{item.content}</p>
+        {'likes' in item && (
+          <LikesComponent
+            id={item.id}
+            likesCount={item.likes}
+            isUserLiked={item.current_user_liked}
+          />
+        )}
+      </main>
+    </article>
+</Box>
+)
 }
 
 ItemDetailsComponent.propTypes = {
@@ -66,6 +79,7 @@ ItemDetailsComponent.propTypes = {
     }).isRequired,
   }).isRequired,
   type: PropTypes.oneOf(['post', 'topic']).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default ItemDetailsComponent
