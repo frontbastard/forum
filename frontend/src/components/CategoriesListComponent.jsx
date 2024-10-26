@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText'
 import {Box, Collapse, ListItemIcon} from '@mui/material';
 import {Add, ExpandLess, ExpandMore} from '@mui/icons-material';
 import TopicsListComponent from './TopicsListComponent.jsx';
+import EditIcon from '@mui/icons-material/Edit';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
@@ -37,7 +38,7 @@ function CategoriesListComponent({categories}) {
               <ListItemIcon>
                 <StarIcon sx={{color: '#bbb'}}/>
               </ListItemIcon>
-              <ListItemText primary={category.name}/>
+              <ListItemText primary={category.name} secondary={category.description}/>
 
               <ListItemButton
                 sx={{flexGrow: 'initial'}}
