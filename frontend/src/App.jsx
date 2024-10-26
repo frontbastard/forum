@@ -14,6 +14,7 @@ import Profile from './pages/Profile.jsx'
 import {UserProvider} from './providers/UserContext.jsx'
 import Register from './pages/Register.jsx'
 import {Container} from '@mui/material';
+import CategoryCreate from './pages/CategoryCreate.jsx';
 
 const darkTheme = createTheme({
   palette: {
@@ -40,6 +41,7 @@ function App() {
               <Route path="/logout" element={<Logout/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/category/:id" element={<Category/>}/>
+              <Route path="/category-create" element={<CategoryCreate/>}/>
               <Route path="/topics" element={<TopicList/>}/>
               <Route path="/topics/:id" element={<Topic/>}/>
             </Routes>

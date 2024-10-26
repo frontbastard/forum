@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import LikesComponent from './LikesComponent.jsx';
-import {Box} from "@mui/material";
+import {Box} from '@mui/material';
 
 function ItemDetailsComponent({item, type}) {
   return (

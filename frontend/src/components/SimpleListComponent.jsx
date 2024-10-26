@@ -8,7 +8,7 @@ import TopicIcon from '@mui/icons-material/Topic';
 function SimpleListComponent({items, uriPath, idField, textField}) {
   if (!items || items.length === 0) {
     return <List component='div' disablePadding><ListItemText
-      primary='No topics available'/></List>
+      primary='No items available'/></List>
   }
 
   return (

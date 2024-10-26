@@ -18,7 +18,7 @@ function LikesComponent({id, likesCount, isUserLiked}) {
   return (
     <span className="content-right-votes">
       <Button
-        variant="text"
+        variant="link"
         sx={{
           color: isLiked ? '#90caf9' : '#eee'
         }}
