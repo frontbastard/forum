@@ -5,11 +5,8 @@ import ListItemText from '@mui/material/ListItemText';
 import {ListItemIcon} from '@mui/material';
 import TopicIcon from '@mui/icons-material/Topic';
 import {Link} from 'react-router-dom';
-import {Add} from '@mui/icons-material';
-import {useUser} from '../providers/UserContext.jsx';
 
-function TopicsListComponent({topics, categoryId}) {
-  const [user] = useUser()
+function TopicsListComponent({topics, }) {
   return (
     <List component="div" disablePadding>
       {topics.map(topic => (
@@ -26,16 +23,6 @@ function TopicsListComponent({topics, categoryId}) {
           {topic.posts_count} posts
         </ListItemButton>
       ))}
-      <ListItemButton
-        sx={{pl: 4, border: '1px solid #444'}}
-        component={Link}
-        to={user ? `/topic-create/${categoryId}` : '/login'}
-      >
-        <ListItemIcon>
-          <Add sx={{color: '#bbb'}}/>
-        </ListItemIcon>
-        <ListItemText primary="Add a new topic"/>
-      </ListItemButton>
     </List>
   )
 }
@@ -48,7 +35,6 @@ TopicsListComponent.propTypes = {
       posts_count: PropTypes.number.isRequired,
     })
   ).isRequired,
-  categoryId: PropTypes.number.isRequired,
 };
 
 export default TopicsListComponent

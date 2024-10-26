@@ -32,7 +32,7 @@ function Login() {
           <b>Login</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
-          Sign in to continue.
+          Sign in to continue
         </Typography>
         <form onSubmit={submit}>
           <TextField

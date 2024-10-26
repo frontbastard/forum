@@ -49,7 +49,7 @@ function Register() {
           <b>Registration</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
-          Sign up to continue.
+          Sign up to continue
         </Typography>
         <form onSubmit={submit}>
           <TextField

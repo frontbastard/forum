@@ -31,7 +31,7 @@ function CategoryCreate() {
           <b>Add Category</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
-          Please enter the name and description of the category..
+          Please enter the name and description of the category
         </Typography>
         <form onSubmit={submit}>
           <TextField

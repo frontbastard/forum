@@ -37,7 +37,7 @@ function TopicCreate() {
           <b>Add Topic</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
-          Please enter the name and description of the topic..
+          Please enter the name and description of the topic
         </Typography>
         <form onSubmit={submit}>
           <TextField
