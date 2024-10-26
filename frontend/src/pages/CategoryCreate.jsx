@@ -30,7 +30,7 @@ function CategoryCreate() {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
-          <b>Add Category</b>
+          Add Category
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
           Please enter the name and description of the category

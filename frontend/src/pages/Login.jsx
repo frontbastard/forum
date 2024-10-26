@@ -30,7 +30,7 @@ function Login() {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
-          <b>Login</b>
+          Login
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
           Sign in to continue

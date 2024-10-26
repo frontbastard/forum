@@ -30,7 +30,7 @@ function Home() {
         <h1>Forum Categories</h1>
         {user && user.is_staff && (
           <Button variant="outlined" component={Link} to="/category-create">
-            <Add fontSize='large'/>
+            <Add fontSize='large'/> Add category
           </Button>
         )}
       </Box>
