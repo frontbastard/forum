@@ -43,7 +43,7 @@ class TopicSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Topic
-        exclude = ("category",)
+        fields = "__all__"
 
 
 class TopicDetailSerializer(TopicSerializer):

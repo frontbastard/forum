@@ -38,7 +38,10 @@ function CategoriesListComponent({categories}) {
           </ListItemButton>
           <Collapse in={!openCategories[category.id]} timeout="auto"
                     unmountOnExit>
-            <TopicsListComponent topics={category.topics}/>
+            <TopicsListComponent
+              topics={category.topics}
+              categoryId={category.id}
+            />
           </Collapse>
         </React.Fragment>
       ))}

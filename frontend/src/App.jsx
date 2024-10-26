@@ -5,7 +5,7 @@ import {ThemeProvider} from '@mui/material/styles'
 import {createTheme} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import Home from './pages/Home.jsx'
-import TopicList from './pages/TopicList.jsx'
+import TopicCreate from './pages/TopicCreate.jsx'
 import Topic from './pages/Topic.jsx'
 import Category from './pages/Category.jsx'
 import Login from './pages/Login.jsx'
@@ -13,8 +13,9 @@ import {Logout} from './pages/Logout.jsx'
 import Profile from './pages/Profile.jsx'
 import {UserProvider} from './providers/UserContext.jsx'
 import Register from './pages/Register.jsx'
-import {Container} from '@mui/material';
+import {Box, Container} from '@mui/material';
 import CategoryCreate from './pages/CategoryCreate.jsx';
+import FooterComponent from './components/FooterComponent.jsx';
 
 const darkTheme = createTheme({
   palette: {
@@ -31,22 +32,26 @@ function App() {
       <CssBaseline/>
       <UserProvider>
         <Router>
-          <div className="wrapper">
+          <Box
+            sx={{display: 'flex', flexDirection: 'column', height: '100%'}}
+          >
             <HeaderComponent/>
-            <Container>
+            <Container sx={{flexGrow: 1}}>
               <Routes>
-              <Route path="/" element={<Home/>}/>
-              <Route path="/login" element={<Login/>}/>
-              <Route path="/register" element={<Register/>}/>
-              <Route path="/logout" element={<Logout/>}/>
-              <Route path="/profile" element={<Profile/>}/>
-              <Route path="/category/:id" element={<Category/>}/>
-              <Route path="/category-create" element={<CategoryCreate/>}/>
-              <Route path="/topics" element={<TopicList/>}/>
-              <Route path="/topics/:id" element={<Topic/>}/>
-            </Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/register" element={<Register/>}/>
+                <Route path="/logout" element={<Logout/>}/>
+                <Route path="/profile" element={<Profile/>}/>
+                <Route path="/category/:id" element={<Category/>}/>
+                <Route path="/category-create" element={<CategoryCreate/>}/>
+                <Route path="/topics/:id" element={<Topic/>}/>
+                <Route path="/topic-create/:categoryId"
+                       element={<TopicCreate/>}/>
+              </Routes>
             </Container>
-          </div>
+            <FooterComponent/>
+          </Box>
         </Router>
       </UserProvider>
     </ThemeProvider>

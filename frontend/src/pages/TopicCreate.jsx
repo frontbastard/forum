@@ -3,24 +3,30 @@ import api from '../interceptors/api.js';
 import {Box, Container, Paper, TextField} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {useParams} from 'react-router-dom';
+import {useUser} from '../providers/UserContext.jsx';
 
-function CategoryCreate() {
+function TopicCreate() {
   const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [content, setContent] = useState('')
+  const [user] = useUser()
+  const {categoryId} = useParams()
 
   const submit = async (e) => {
     e.preventDefault()
 
-    const category = {
+    const topic = {
       name,
-      description,
+      content,
+      author: user.id,
+      category: Number(categoryId)
     }
 
     try {
-      await api.post('/forum/categories/', category)
-      window.location.href = '/'
+      const response = await api.post('/forum/topics/', topic)
+      window.location.href = `/topics/${response.data.id}/`
     } catch (error) {
-      console.error('Category add error:', error)
+      console.error('Topic add error:', error)
     }
   }
 
@@ -28,10 +34,10 @@ function CategoryCreate() {
     <Container maxWidth="sm">
       <Paper elevation={3} sx={{ padding: 4, marginTop: 8 }}>
         <Typography variant="h4" component="h1" align="center" gutterBottom>
-          <b>Add Category</b>
+          <b>Add Topic</b>
         </Typography>
         <Typography variant="body2" align="center" gutterBottom>
-          Please enter the name and description of the category..
+          Please enter the name and description of the topic..
         </Typography>
         <form onSubmit={submit}>
           <TextField
@@ -50,8 +56,8 @@ function CategoryCreate() {
             variant="outlined"
             fullWidth
             margin="normal"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
             required
           />
           <Box mt={2} display="flex" justifyContent="center">
@@ -65,4 +71,4 @@ function CategoryCreate() {
   )
 }
 
-export default CategoryCreate
+export default TopicCreate
