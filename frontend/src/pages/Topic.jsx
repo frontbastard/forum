@@ -45,7 +45,8 @@ function Topic() {
 
     try {
       await api.delete(`/forum/posts/${id}/`)
-      setPosts((prevPosts) => prevPosts.filter((post) => post.id !== id))
+      setPosts((prevPosts) =>
+        prevPosts.filter((post) => post.id !== id))
     } catch (error) {
       console.error('Post remove error:', error)
     }

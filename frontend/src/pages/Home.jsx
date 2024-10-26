@@ -18,6 +18,18 @@ function Home() {
       .catch(error => console.error('Error fetching categories:', error))
   }, [])
 
+  const handleDeleteCategory = async (e, id) => {
+    e.preventDefault()
+
+    try {
+      await api.delete(`/forum/categories/${id}/`)
+      setCategories((prevCategories) =>
+        prevCategories.filter((category) => category.id !== id))
+    } catch (error) {
+      console.error('Category remove error:', error)
+    }
+  }
+
   if (!categories.length) return <p>Loading categories...</p>
 
   return (
@@ -34,7 +46,10 @@ function Home() {
           </Button>
         )}
       </Box>
-      <CategoriesListComponent categories={categories}/>
+      <CategoriesListComponent
+        categories={categories}
+        onDelete={(e, id) => handleDeleteCategory(e, id)}
+      />
     </div>
   )
 }

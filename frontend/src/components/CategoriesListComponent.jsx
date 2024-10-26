@@ -4,17 +4,17 @@ import StarIcon from '@mui/icons-material/Star';
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import {Box, Collapse, ListItemIcon} from '@mui/material';
-import {Add, ExpandLess, ExpandMore} from '@mui/icons-material';
+import {Add, Delete, ExpandLess, ExpandMore} from '@mui/icons-material';
 import TopicsListComponent from './TopicsListComponent.jsx';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
 
-function CategoriesListComponent({categories}) {
+function CategoriesListComponent({categories, onDelete}) {
   const [user] = useUser()
   const [openCategories, setOpenCategories] = useState({});
 
-  const handleClick = (categoryId) => {
+  const handleToggleCategory = (categoryId) => {
     setOpenCategories(prev => ({
       ...prev,
       [categoryId]: !prev[categoryId]
@@ -31,13 +31,26 @@ function CategoriesListComponent({categories}) {
         <React.Fragment key={category.id}>
           <Box sx={{mb: 2}}>
             <ListItemButton
-              onClick={() => handleClick(category.id)}
+              onClick={() => handleToggleCategory(category.id)}
               sx={{border: '1px solid #444', backgroundColor: '#333'}}
             >
               <ListItemIcon>
                 <StarIcon color="#bbb"/>
               </ListItemIcon>
-              <ListItemText primary={category.name} secondary={category.description}/>
+              <ListItemText
+                primary={category.name}
+                secondary={category.description}
+              />
+
+              {user?.is_staff && (
+                <ListItemButton
+                  sx={{flexGrow: 'initial', mr: 1}}
+                  onClick={(e) => onDelete(e, category.id)}
+                >
+                  <Delete color='#bbb' sx={{mr: 1}}/>
+                  <ListItemText>Delete category</ListItemText>
+                </ListItemButton>
+              )}
 
               <ListItemButton
                 sx={{flexGrow: 'initial', mr: 1}}
@@ -73,7 +86,8 @@ CategoriesListComponent.propTypes = {
       name: PropTypes.string.isRequired,
       topics: PropTypes.array.isRequired,
     })
-  ).isRequired
+  ).isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default CategoriesListComponent
