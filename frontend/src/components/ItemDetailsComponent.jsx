@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import LikesComponent from './LikesComponent.jsx';
+import {Box} from "@mui/material";
 
 function ItemDetailsComponent({item, type}) {
   return (
-    <section className={`${type}-content`} id={`${type}-${item.id}`}>
+    <Box
+      component="section"
+      className={`${type}-content`}
+      id={`${type}-${item.id}`}
+      sx={{
+        flexDirection: {
+          xs: 'column',
+          sm: 'initial'
+        }
+      }}
+    >
       <aside className="content-left">
         <Avatar alt="Remy Sharp"
                 src={`https://api.dicebear.com/9.x/pixel-art/webp?seed=${item.author.email}`}/>
@@ -32,7 +43,7 @@ function ItemDetailsComponent({item, type}) {
           )}
         </main>
       </article>
-    </section>
+    </Box>
   )
 }
 
