@@ -39,27 +39,27 @@ function ItemDetailsComponent({item, type, onDelete}) {
           }
 
 
-          {user && (
+          {user && user.id === item.id || user.is_staff && (
             <Delete
               fontSize='medium'
               sx={{cursor: 'pointer'}}
               onClick={onDelete}
             />
-        )}
-      </header>
-      <main className="content-right-main">
-        <p className="content-right-text">{item.content}</p>
-        {'likes' in item && (
-          <LikesComponent
-            id={item.id}
-            likesCount={item.likes}
-            isUserLiked={item.current_user_liked}
-          />
-        )}
-      </main>
-    </article>
-</Box>
-)
+          )}
+        </header>
+        <main className="content-right-main">
+          <p className="content-right-text">{item.content}</p>
+          {'likes' in item && (
+            <LikesComponent
+              id={item.id}
+              likesCount={item.likes}
+              isUserLiked={item.current_user_liked}
+            />
+          )}
+        </main>
+      </article>
+    </Box>
+  )
 }
 
 ItemDetailsComponent.propTypes = {
