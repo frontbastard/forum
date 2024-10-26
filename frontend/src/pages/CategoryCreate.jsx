@@ -3,8 +3,10 @@ import api from '../interceptors/api.js';
 import {Box, Container, Paper, TextField} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import {useNavigate} from 'react-router-dom';
 
 function CategoryCreate() {
+  const navigate = useNavigate()
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
 
@@ -18,7 +20,7 @@ function CategoryCreate() {
 
     try {
       await api.post('/forum/categories/', category)
-      window.location.href = '/'
+      navigate('/')
     } catch (error) {
       console.error('Category add error:', error)
     }

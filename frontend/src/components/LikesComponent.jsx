@@ -22,7 +22,7 @@ function LikesComponent({id, likesCount, isUserLiked}) {
         sx={{
           color: isLiked ? '#90caf9' : '#eee'
         }}
-        onClick={() => likeOnPost()}
+        onClick={likeOnPost}
       >
         <ThumbUpIcon/>
       </Button>

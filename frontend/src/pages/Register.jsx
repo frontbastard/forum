@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
 import api, {setAccessToken} from '../interceptors/api.js'
 
 function Register() {
+  const navigate = useNavigate()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -36,7 +37,7 @@ function Register() {
 
       setAccessToken(access)
 
-      window.location.href = '/'
+      navigate('/')
     } catch (error) {
       console.error('Register error:', error)
     }

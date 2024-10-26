@@ -3,10 +3,11 @@ import api from '../interceptors/api.js';
 import {Box, Container, Paper, TextField} from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
 
 function TopicCreate() {
+  const navigate = useNavigate()
   const [name, setName] = useState('')
   const [content, setContent] = useState('')
   const [user] = useUser()
@@ -24,7 +25,7 @@ function TopicCreate() {
 
     try {
       const response = await api.post('/forum/topics/', topic)
-      window.location.href = `/topics/${response.data.id}/`
+      navigate(`/topics/${response.data.id}/`)
     } catch (error) {
       console.error('Topic add error:', error)
     }

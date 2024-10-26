@@ -1,11 +1,12 @@
 import {useState} from 'react'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
 import api from '../interceptors/api.js'
 
 function Login() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -19,7 +20,7 @@ function Login() {
 
     try {
       await api.post('/users/token/', user)
-      window.location.href = '/'
+      navigate('/')
     } catch (error) {
       console.error('Login error:', error)
     }
