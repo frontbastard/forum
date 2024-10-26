@@ -1,11 +1,12 @@
 from django.db import transaction
-from django.db.models import F, Sum, Count
+from django.db.models import Count
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, status
+from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from forum.models import Category, Topic, Post, PostLike
+from forum.permissions import IsAuthorOrReadOnly, IsStaffOrReadOnly
 from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
@@ -19,6 +20,7 @@ from forum.serializers import (
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    permission_classes = (IsStaffOrReadOnly,)
 
     def get_serializer_class(self):
         serializer_class = self.serializer_class
@@ -32,6 +34,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class TopicViewSet(viewsets.ModelViewSet):
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
+    permission_classes = (IsStaffOrReadOnly, IsAuthorOrReadOnly)
 
     def get_queryset(self):
         queryset = self.queryset
@@ -68,6 +71,7 @@ class TopicViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    permission_classes = (IsStaffOrReadOnly, IsAuthorOrReadOnly)
 
     def get_queryset(self):
         queryset = self.queryset
