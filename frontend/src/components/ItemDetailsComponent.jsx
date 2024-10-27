@@ -100,9 +100,9 @@ function ItemDetailsComponent({item, type, onDelete, onEdit}) {
                   <Delete
                     fontSize='small'
                     sx={{cursor: 'pointer'}}
-                    onClick={(e) => onDelete(e, item.id)}
                   />
                 }
+                onClick={(e) => onDelete(e, item.id)}
               >
                 Delete
               </Button>
