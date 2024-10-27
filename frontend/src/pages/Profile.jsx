@@ -1,9 +1,15 @@
 import {Grid, Paper, Typography} from '@mui/material'
 import SimpleListComponent from '../components/SimpleListComponent.jsx'
 import {useUser} from '../providers/UserContext.jsx'
+import {useEffect} from 'react'
 
 const UserProfile = () => {
   const [profile] = useUser(null)
+  const [,,updateUser] = useUser()
+
+  useEffect( () => {
+    updateUser()
+  }, []);
 
   if (!profile) {
     return <div>Loading...</div>

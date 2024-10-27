@@ -4,9 +4,11 @@ import Button from '@mui/material/Button'
 import {Link, useNavigate} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
 import api, {setAccessToken} from '../interceptors/api.js'
+import {useUser} from '../providers/UserContext.jsx'
 
 function Register() {
   const navigate = useNavigate()
+  const [,,updateUser] = useUser()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -37,6 +39,7 @@ function Register() {
 
       setAccessToken(access)
 
+      await updateUser()
       navigate('/')
     } catch (error) {
       console.error('Register error:', error)
