@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import Avatar from '@mui/material/Avatar';
-import LikesComponent from './LikesComponent.jsx';
-import {Box} from '@mui/material';
-import {useUser} from '../providers/UserContext.jsx';
-import {Delete} from '@mui/icons-material';
+import PropTypes from 'prop-types'
+import Avatar from '@mui/material/Avatar'
+import LikesComponent from './LikesComponent.jsx'
+import {Box} from '@mui/material'
+import {useUser} from '../providers/UserContext.jsx'
+import {Delete} from '@mui/icons-material'
 
 function ItemDetailsComponent({item, type, onDelete}) {
   const [user] = useUser()
@@ -27,8 +27,9 @@ function ItemDetailsComponent({item, type, onDelete}) {
         />
         <p>{item.author.email}</p>
         <p>Registered: {item.author.date_joined}</p>
-        <p>Topics: {item.author.topics_count} /
-          Posts: {item.author.posts_count}</p>
+        <p>{item.author.topics_count} topic{item.author.topics_count > 1 && 's'} /&nbsp;
+          {item.author.posts_count} posts</p>
+        <p><strong>{item.author.is_staff && 'Moderator'}</strong></p>
       </aside>
       <article className="content-right">
         <header className="content-right-header">
@@ -72,6 +73,7 @@ ItemDetailsComponent.propTypes = {
     likes: PropTypes.number,
     current_user_liked: PropTypes.bool,
     author: PropTypes.shape({
+      is_staff: PropTypes.bool,
       email: PropTypes.string.isRequired,
       date_joined: PropTypes.string.isRequired,
       posts_count: PropTypes.number.isRequired,
@@ -80,6 +82,6 @@ ItemDetailsComponent.propTypes = {
   }).isRequired,
   type: PropTypes.oneOf(['post', 'topic']).isRequired,
   onDelete: PropTypes.func.isRequired,
-};
+}
 
 export default ItemDetailsComponent
