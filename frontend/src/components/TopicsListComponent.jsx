@@ -13,7 +13,6 @@ function TopicsListComponent({topics, }) {
         <ListItemButton
           key={topic.id}
           sx={{
-            pl: 4,
             border: '1px solid #444',
             '&:hover': {
               backgroundColor: 'rgba(0,0,0,0.2)'
@@ -25,8 +24,8 @@ function TopicsListComponent({topics, }) {
           <ListItemIcon>
             <TopicIcon sx={{color: '#bbb'}}/>
           </ListItemIcon>
-          <ListItemText primary={topic.name}/>
-          {topic.posts_count} posts
+          <ListItemText primary={topic.name} sx={{mr: 1}}/>
+          {topic.posts_count}&nbsp;posts
         </ListItemButton>
       ))}
     </List>

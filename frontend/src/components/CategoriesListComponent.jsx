@@ -48,18 +48,34 @@ function CategoriesListComponent({categories, onDelete}) {
                   onClick={(e) => onDelete(e, category.id)}
                 >
                   <Delete color='#bbb' sx={{mr: 1}}/>
-                  <ListItemText>Delete category</ListItemText>
+                  <ListItemText
+                    sx={{
+                      display: {
+                        xs: 'none',
+                        sm: 'block'
+                      }
+                    }}
+                  >Delete category</ListItemText>
                 </ListItemButton>
               )}
 
-              <ListItemButton
-                sx={{flexGrow: 'initial', mr: 1}}
-                component={Link}
-                to={user ? `/topic-create/${category.id}` : '/login'}
-              >
-                <Add color='#bbb' sx={{mr: 1}}/>
-                <ListItemText>Add topic</ListItemText>
-              </ListItemButton>
+              {user && (
+                <ListItemButton
+                  sx={{flexGrow: 'initial', mr: 1}}
+                  component={Link}
+                  to={user ? `/topic-create/${category.id}` : '/login'}
+                >
+                  <Add color='#bbb' sx={{mr: 1}}/>
+                  <ListItemText
+                    sx={{
+                      display: {
+                        xs: 'none',
+                        sm: 'block'
+                      }
+                    }}
+                  >Add topic</ListItemText>
+                </ListItemButton>
+              )}
               {openCategories[category.id] ? <ExpandLess/> : <ExpandMore/>}
             </ListItemButton>
             <Collapse
