@@ -1,12 +1,38 @@
 import PropTypes from 'prop-types'
 import Avatar from '@mui/material/Avatar'
 import LikesComponent from './LikesComponent.jsx'
-import {Box} from '@mui/material'
+import {Box, Typography} from '@mui/material'
 import {useUser} from '../providers/UserContext.jsx'
-import {Delete} from '@mui/icons-material'
+import {Delete, Edit, Save} from '@mui/icons-material'
+import Button from '@mui/material/Button'
+import {useEffect, useRef, useState} from 'react'
 
-function ItemDetailsComponent({item, type, onDelete}) {
+function ItemDetailsComponent({item, type, onDelete, onEdit}) {
   const [user] = useUser()
+  const textareaRef = useRef(null)
+  const [isEdit, setIsEdit] = useState(false)
+  const [editedContent, setEditedContent] = useState(item.content)
+
+  useEffect(() => {
+    if (isEdit && textareaRef.current) {
+      textareaRef.current.focus()
+      const length = textareaRef.current.value.length
+      textareaRef.current.setSelectionRange(length, length)
+    }
+  }, [isEdit])
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault()
+      handleSave(e)
+    }
+  }
+
+  const handleSave = (e) => {
+    e.preventDefault()
+    setIsEdit(false)
+    onEdit(e, item.id, editedContent)
+  }
 
   return (
     <Box
@@ -40,15 +66,82 @@ function ItemDetailsComponent({item, type, onDelete}) {
           }
 
           {(user?.id === item.author.id || user.is_staff) && (
-            <Delete
-              fontSize='medium'
-              sx={{cursor: 'pointer'}}
-              onClick={onDelete}
-            />
+            <Box>
+              {isEdit ? (
+                <Button
+                  size="small"
+                  startIcon={
+                    <Save fontSize='small'/>
+                  }
+                  sx={{
+                    mr: 2
+                  }}
+                  onClick={handleSave}
+                >
+                  Save
+                </Button>
+              ) : (
+                <Button
+                  size="small"
+                  startIcon={
+                    <Edit fontSize='small'/>
+                  }
+                  sx={{
+                    mr: 2
+                  }}
+                  onClick={() => setIsEdit(true)}
+                >
+                  Edit
+                </Button>
+              )}
+              <Button
+                size="small"
+                startIcon={
+                  <Delete
+                    fontSize='small'
+                    sx={{cursor: 'pointer'}}
+                    onClick={(e) => onDelete(e, item.id)}
+                  />
+                }
+              >
+                Delete
+              </Button>
+            </Box>
           )}
         </header>
         <main className="content-right-main">
-          <p className="content-right-text">{item.content}</p>
+          {isEdit ? (
+            <Box
+              component="textarea"
+              wrap="hard"
+              ref={textareaRef}
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              onKeyDown={handleKeyDown}
+              sx={{
+                bgcolor: 'transparent',
+                height: '100%',
+                color: '#fff',
+                fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+                fontSize: '1rem',
+                lineHeight: '24px',
+                outline: 'none',
+              }}
+            >
+              {item.content}
+            </Box>
+          ) : (
+            <Typography
+              component="p"
+              className="content-right-text"
+              sx={{
+                whiteSpace: 'pre-wrap'
+              }}
+            >
+              {item.content}
+            </Typography>
+          )}
+
           {'likes' in item && (
             <LikesComponent
               id={item.id}
@@ -82,6 +175,7 @@ ItemDetailsComponent.propTypes = {
   }).isRequired,
   type: PropTypes.oneOf(['post', 'topic']).isRequired,
   onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
 }
 
 export default ItemDetailsComponent

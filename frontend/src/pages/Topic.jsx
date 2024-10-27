@@ -52,6 +52,36 @@ function Topic() {
     }
   }
 
+  const handleEditTopic = async (e, id, content) => {
+    e.preventDefault()
+
+    try {
+      const response = await api.patch(`/forum/topics/${id}/`, {
+        content
+      })
+
+      setTopic(response.data)
+    } catch (error) {
+      console.error('Topic edit error:', error)
+    }
+  }
+
+  const handleEditPost = async (e, id, content) => {
+    e.preventDefault()
+
+    try {
+      const response = await api.patch(`/forum/posts/${id}/`, {
+        content
+      })
+
+      setPosts(prevPosts => prevPosts.map(
+        post => post.id === id ? {...post, ...response.data} : post
+      ))
+    } catch (error) {
+      console.error('Post edit error:', error)
+    }
+  }
+
   useEffect(() => {
     api.get(`/forum/topics/${topicId}/`)
       .then(response => {
@@ -68,13 +98,15 @@ function Topic() {
       <h2>{topic.name}</h2>
       <ItemDetailsComponent
         item={topic} type="topic"
-        onDelete={(e) => handleDeleteTopic(e, topic.id)}
+        onDelete={(e, id) => handleDeleteTopic(e, id)}
+        onEdit={(e, id, content) => handleEditTopic(e, id, content)}
       />
       <h2>Posts:</h2>
       {posts.map(post => (
         <ItemDetailsComponent
           key={post.id} item={post} type="post"
-          onDelete={(e) => handleDeletePost(e, post.id)}
+          onDelete={(e, id) => handleDeletePost(e, id)}
+          onEdit={(e, id, content) => handleEditPost(e, id, content)}
         />
       ))}
       <form onSubmit={submit}>

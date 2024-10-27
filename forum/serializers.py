@@ -39,6 +39,7 @@ class PostListSerializer(PostSerializer):
 
 
 class TopicSerializer(serializers.ModelSerializer):
+    author = UserSerializer(read_only=True)
     posts_count = serializers.IntegerField(read_only=True)
 
     class Meta:
@@ -47,7 +48,6 @@ class TopicSerializer(serializers.ModelSerializer):
 
 
 class TopicDetailSerializer(TopicSerializer):
-    author = UserSerializer(read_only=True)
     posts = PostSerializer(many=True, read_only=True)
 
 

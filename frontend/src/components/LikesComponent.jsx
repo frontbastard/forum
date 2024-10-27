@@ -18,15 +18,14 @@ function LikesComponent({id, likesCount, isUserLiked}) {
   return (
     <span className="content-right-votes">
       <Button
-        variant="link"
+        startIcon={<ThumbUpIcon/>}
         sx={{
           color: isLiked ? '#90caf9' : '#eee'
         }}
         onClick={likeOnPost}
       >
-        <ThumbUpIcon/>
+        <span>{likes}</span>
       </Button>
-      <span>{likes}</span>
     </span>
   )
 }

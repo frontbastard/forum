@@ -12,7 +12,13 @@ function TopicsListComponent({topics, }) {
       {topics.map(topic => (
         <ListItemButton
           key={topic.id}
-          sx={{pl: 4, border: '1px solid #444'}}
+          sx={{
+            pl: 4,
+            border: '1px solid #444',
+            '&:hover': {
+              backgroundColor: 'rgba(0,0,0,0.2)'
+            }
+        }}
           component={Link}
           to={`/topics/${topic.id}`}
         >
