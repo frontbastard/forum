@@ -39,8 +39,7 @@ function ItemDetailsComponent({item, type, onDelete}) {
               item.updated_at
           }
 
-
-          {user && user.id === item.id || user.is_staff && (
+          {(user?.id === item.author.id || user.is_staff) && (
             <Delete
               fontSize='medium'
               sx={{cursor: 'pointer'}}
@@ -73,6 +72,7 @@ ItemDetailsComponent.propTypes = {
     likes: PropTypes.number,
     current_user_liked: PropTypes.bool,
     author: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       is_staff: PropTypes.bool,
       email: PropTypes.string.isRequired,
       date_joined: PropTypes.string.isRequired,

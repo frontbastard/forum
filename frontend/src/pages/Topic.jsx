@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import ItemDetailsComponent from '../components/ItemDetailsComponent.jsx'
-import api from '../interceptors/api.js';
-import {Box, TextField} from '@mui/material';
-import Button from '@mui/material/Button';
+import api from '../interceptors/api.js'
+import {Box, TextField} from '@mui/material'
+import Button from '@mui/material/Button'
 
 function Topic() {
   const navigate = useNavigate()

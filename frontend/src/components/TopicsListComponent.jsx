@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import {ListItemIcon} from '@mui/material';
-import TopicIcon from '@mui/icons-material/Topic';
-import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types'
+import List from '@mui/material/List'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemText from '@mui/material/ListItemText'
+import {ListItemIcon} from '@mui/material'
+import TopicIcon from '@mui/icons-material/Topic'
+import {Link} from 'react-router-dom'
 
 function TopicsListComponent({topics, }) {
   return (
@@ -35,6 +35,6 @@ TopicsListComponent.propTypes = {
       posts_count: PropTypes.number.isRequired,
     })
   ).isRequired,
-};
+}
 
 export default TopicsListComponent
