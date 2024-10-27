@@ -2,15 +2,17 @@ import {useState, useEffect} from 'react'
 import CategoriesListComponent
   from '../components/CategoriesListComponent.jsx'
 import api from '../interceptors/api.js'
-import {Box} from '@mui/material';
+import {Box, Typography} from '@mui/material';
 import Button from '@mui/material/Button';
 import {Add} from '@mui/icons-material';
 import {Link} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
+import {handleError} from '../utils/errorHandler.js'
 
 function Home() {
   const [user] = useUser()
   const [categories, setCategories] = useState([])
+  const [error, setError] = useState('')
 
   useEffect(() => {
     api.get('/forum/categories/')
@@ -26,6 +28,7 @@ function Home() {
       setCategories((prevCategories) =>
         prevCategories.filter((category) => category.id !== id))
     } catch (error) {
+      handleError(error, setError)
       console.error('Category remove error:', error)
     }
   }
@@ -40,6 +43,7 @@ function Home() {
         justifyContent: 'space-between'
       }}>
         <h1>Forum Categories</h1>
+        {error && <Typography color="error">{error}</Typography>}
         {user?.is_staff && (
           <Button variant="outlined" component={Link} to="/category-create">
             <Add fontSize='large'/> Add category

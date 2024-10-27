@@ -2,18 +2,26 @@ import {useEffect, useState} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
 import ItemDetailsComponent from '../components/ItemDetailsComponent.jsx'
 import api from '../interceptors/api.js'
-import {Box, TextField} from '@mui/material'
+import {Box, TextField, Typography} from '@mui/material'
 import Button from '@mui/material/Button'
+import {useUser} from '../providers/UserContext.jsx'
+import {handleError} from '../utils/errorHandler.js'
 
 function Topic() {
   const navigate = useNavigate()
+  const [user] = useUser()
   const [topic, setTopic] = useState(null)
   const [posts, setPosts] = useState(null)
   const [content, setContent] = useState('')
   const {topicId} = useParams()
+  const [error, setError] = useState('')
 
   const submit = async (e) => {
     e.preventDefault()
+
+    if (!user) {
+      navigate('/login')
+    }
 
     const post = {
       topic: topic.id,
@@ -25,6 +33,7 @@ function Topic() {
       setPosts([...posts, response.data])
       setContent('')
     } catch (error) {
+      handleError(error, setError)
       console.error('Topic add error:', error)
     }
   }
@@ -36,6 +45,7 @@ function Topic() {
       await api.delete(`/forum/topics/${id}/`)
       navigate('/')
     } catch (error) {
+      handleError(error, setError)
       console.error('Topic remove error:', error)
     }
   }
@@ -48,6 +58,7 @@ function Topic() {
       setPosts((prevPosts) =>
         prevPosts.filter((post) => post.id !== id))
     } catch (error) {
+      handleError(error, setError)
       console.error('Post remove error:', error)
     }
   }
@@ -65,6 +76,7 @@ function Topic() {
         content: response.data.content
       }))
     } catch (error) {
+      handleError(error, setError)
       console.error('Topic edit error:', error)
     }
   }
@@ -81,6 +93,7 @@ function Topic() {
         post => post.id === id ? {...post, ...response.data} : post
       ))
     } catch (error) {
+      handleError(error, setError)
       console.error('Post edit error:', error)
     }
   }
@@ -91,13 +104,17 @@ function Topic() {
         setTopic(response.data)
         setPosts(response.data.posts)
       })
-      .catch(error => console.error('Error fetching topic:', error))
+      .catch(error => {
+        handleError(error, setError)
+        console.error('Error fetching topic:', error)
+      })
   }, [topicId])
 
   if (!topic) return <p>Loading topic...</p>
 
   return (
     <div>
+      {error && <Typography color="error">{error}</Typography>}
       <h2>{topic.name}</h2>
       <ItemDetailsComponent
         item={topic} type="topic"

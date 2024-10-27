@@ -5,10 +5,11 @@ import {Link, useNavigate} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
 import api, {setAccessToken} from '../interceptors/api.js'
 import {useUser} from '../providers/UserContext.jsx'
+import {handleError} from '../utils/errorHandler.js'
 
 function Register() {
   const navigate = useNavigate()
-  const [,,updateUser] = useUser()
+  const [, , updateUser] = useUser()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -27,10 +28,7 @@ function Register() {
     }
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match')
-      return
-    } else {
-      setError('')
+      return setError('Passwords do not match')
     }
 
     try {
@@ -42,6 +40,7 @@ function Register() {
       await updateUser()
       navigate('/')
     } catch (error) {
+      handleError(error, setError)
       console.error('Register error:', error)
     }
   }

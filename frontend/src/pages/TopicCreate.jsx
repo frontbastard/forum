@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useUser} from '../providers/UserContext.jsx';
+import {handleError} from '../utils/errorHandler.js'
 
 function TopicCreate() {
   const navigate = useNavigate()
@@ -12,6 +13,7 @@ function TopicCreate() {
   const [content, setContent] = useState('')
   const [user] = useUser()
   const {categoryId} = useParams()
+  const [error, setError] = useState('')
 
   const submit = async (e) => {
     e.preventDefault()
@@ -27,6 +29,7 @@ function TopicCreate() {
       const response = await api.post('/forum/topics/', topic)
       navigate(`/topics/${response.data.id}/`)
     } catch (error) {
+      handleError(error, setError)
       console.error('Topic add error:', error)
     }
   }
@@ -61,6 +64,7 @@ function TopicCreate() {
             onChange={(e) => setContent(e.target.value)}
             required
           />
+          {error && <Typography color="error">{error}</Typography>}
           <Box mt={2} display="flex" justifyContent="center">
             <Button
               type="submit" variant="contained" color="primary"

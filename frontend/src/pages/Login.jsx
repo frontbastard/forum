@@ -5,12 +5,14 @@ import {Link, useNavigate} from 'react-router-dom'
 import {Box, Container, Paper, TextField} from '@mui/material'
 import api from '../interceptors/api.js'
 import {useUser} from '../providers/UserContext.jsx'
+import {handleError} from '../utils/errorHandler.js'
 
 function Login() {
   const navigate = useNavigate()
-  const [,,updateUser] = useUser()
+  const [, , updateUser] = useUser()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const submit = async (e) => {
     e.preventDefault()
@@ -25,6 +27,7 @@ function Login() {
       await updateUser()
       navigate('/')
     } catch (error) {
+      handleError(error, setError)
       console.error('Login error:', error)
     }
   }
@@ -58,6 +61,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          {error && <Typography color="error">{error}</Typography>}
           <Box mt={2} display="flex" justifyContent="center">
             <Button type="submit" variant="contained" color="primary"
                     size="large">
