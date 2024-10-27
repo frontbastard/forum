@@ -60,7 +60,10 @@ function Topic() {
         content
       })
 
-      setTopic(response.data)
+      setTopic(prevTopic => ({
+        ...prevTopic,
+        content: response.data.content
+      }))
     } catch (error) {
       console.error('Topic edit error:', error)
     }
