@@ -65,7 +65,7 @@ function ItemDetailsComponent({item, type, onDelete, onEdit}) {
               item.updated_at
           }
 
-          {(user?.id === item.author.id || user.is_staff) && (
+          {(user?.id === item.author.id || user?.is_staff) && (
             <Box>
               {isEdit ? (
                 <Button
