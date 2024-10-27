@@ -21,6 +21,23 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        """Create a user with encrypted password."""
+        return get_user_model().objects.create_user(
+            **validated_data
+        )
+
+    def update(self, instance, validated_data):
+        """Update a user with encrypted password."""
+        password = validated_data.pop("password", None)
+        user = super().update(instance, validated_data)
+
+        if password:
+            user.set_password(password)
+            user.save()
+
+        return user
+
     class Meta:
         model = get_user_model()
         fields = ("email", "password", "is_staff", "first_name", "last_name")
@@ -33,23 +50,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
                 "label": _("Password"),
             }
         }
-
-        def create(self, validated_data):
-            """Create a user with encrypted password."""
-            return settings.AUTH_USER_MODEL.objects.create_user(
-                **validated_data
-            )
-
-        def update(self, instance, validated_data):
-            """Update a user with encrypted password."""
-            password = validated_data.pop("password", None)
-            user = super().update(instance, validated_data)
-
-            if password:
-                user.set_password(password)
-                user.save()
-
-            return user
 
 
 class TopicSimpleSerializer(serializers.ModelSerializer):
