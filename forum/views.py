@@ -6,7 +6,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from forum.models import Category, Topic, Post, PostLike
-from forum.permissions import IsAuthorOrReadOnly, IsStaffOrReadOnly
+from forum.permissions import IsAuthorOrStaffOrReadOnly, IsStaffOrReadOnly
 from forum.serializers import (
     CategorySerializer,
     TopicSerializer,
@@ -34,7 +34,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
 class TopicViewSet(viewsets.ModelViewSet):
     queryset = Topic.objects.all()
     serializer_class = TopicSerializer
-    permission_classes = (IsStaffOrReadOnly, IsAuthorOrReadOnly)
+    permission_classes = (IsAuthorOrStaffOrReadOnly,)
 
     def get_queryset(self):
         queryset = self.queryset
@@ -71,7 +71,7 @@ class TopicViewSet(viewsets.ModelViewSet):
 class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsStaffOrReadOnly, IsAuthorOrReadOnly)
+    permission_classes = (IsAuthorOrStaffOrReadOnly,)
 
     def get_queryset(self):
         queryset = self.queryset
