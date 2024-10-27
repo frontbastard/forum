@@ -65,6 +65,71 @@
     }
   },
   {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "email": "charlie@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Charlie",
+      "last_name": "Brown",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-06T15:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "email": "diana@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Diana",
+      "last_name": "Prince",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-07T16:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "email": "edward@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Edward",
+      "last_name": "Norton",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-08T17:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+      "email": "fiona@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Fiona",
+      "last_name": "Apple",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-09T18:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+      "email": "george@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "George",
+      "last_name": "Miller",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-10T19:00:00Z"
+    }
+  },
+  {
     "model": "forum.category",
     "pk": 1,
     "fields": {
@@ -80,8 +145,8 @@
     "fields": {
       "name": "Sports",
       "description": "Everything about sports events and physical activities",
-      "created_at": "2024-10-19T10:00:00Z",
-      "updated_at": "2024-10-19T10:00:00Z"
+      "created_at": "2024-10-19T10:05:00Z",
+      "updated_at": "2024-10-19T10:05:00Z"
     }
   },
   {
@@ -90,8 +155,8 @@
     "fields": {
       "name": "Cooking",
       "description": "Recipes, culinary tips, and food discussions",
-      "created_at": "2024-10-19T10:00:00Z",
-      "updated_at": "2024-10-19T10:00:00Z"
+      "created_at": "2024-10-19T10:10:00Z",
+      "updated_at": "2024-10-19T10:10:00Z"
     }
   },
   {
@@ -100,8 +165,8 @@
     "fields": {
       "name": "Travel",
       "description": "Share your travel experiences and tips",
-      "created_at": "2024-10-19T10:00:00Z",
-      "updated_at": "2024-10-19T10:00:00Z"
+      "created_at": "2024-10-19T10:15:00Z",
+      "updated_at": "2024-10-19T10:15:00Z"
     }
   },
   {
@@ -109,93 +174,183 @@
     "pk": 5,
     "fields": {
       "name": "Medicine",
-      "description": "Medicines, doctors and weaknesses are welcome",
-      "created_at": "2024-10-19T10:00:00Z",
-      "updated_at": "2024-10-19T10:00:00Z"
+      "description": "Health discussions, medical news, and advice",
+      "created_at": "2024-10-19T10:20:00Z",
+      "updated_at": "2024-10-19T10:20:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 6,
+    "fields": {
+      "name": "Literature",
+      "description": "Book discussions, recommendations, and literary analysis",
+      "created_at": "2024-10-19T10:25:00Z",
+      "updated_at": "2024-10-19T10:25:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 7,
+    "fields": {
+      "name": "Music",
+      "description": "Talk about your favorite music, artists, and concerts",
+      "created_at": "2024-10-19T10:30:00Z",
+      "updated_at": "2024-10-19T10:30:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 8,
+    "fields": {
+      "name": "Science",
+      "description": "Explore scientific discoveries and theories",
+      "created_at": "2024-10-19T10:35:00Z",
+      "updated_at": "2024-10-19T10:35:00Z"
     }
   },
   {
     "model": "forum.topic",
     "pk": 1,
     "fields": {
-      "name": "Artificial Intelligence in 2024",
-      "content": "What AI advancements will we see this year?",
+      "name": "The Future of Quantum Computing",
+      "content": "Quantum computing has the potential to revolutionize the way we process information. Unlike classical computers that use bits, quantum computers use qubits, which can be in multiple states at once due to superposition. This allows quantum computers to solve certain types of problems much faster than classical computers. However, there are significant challenges to overcome, such as error correction and qubit coherence. In this discussion, let's explore the current state of quantum computing, its potential applications in fields like cryptography and medicine, and the hurdles that need to be addressed before it becomes mainstream.",
       "category": 1,
       "author": 1,
-      "created_at": "2024-10-19T10:00:00Z",
-      "updated_at": "2024-10-19T10:00:00Z"
-    }
-  },
-  {
-    "model": "forum.topic",
-    "pk": 2,
-    "fields": {
-      "name": "5G Networks: Pros and Cons",
-      "content": "Discussing the impact of 5G on our lives",
-      "category": 1,
-      "author": 2,
       "created_at": "2024-10-19T11:00:00Z",
       "updated_at": "2024-10-19T11:00:00Z"
     }
   },
   {
     "model": "forum.topic",
-    "pk": 3,
+    "pk": 2,
     "fields": {
-      "name": "2024 Olympic Games",
-      "content": "Predictions and expectations for the Paris Olympics",
-      "category": 2,
-      "author": 3,
+      "name": "AI Ethics and Society",
+      "content": "As artificial intelligence becomes more integrated into our daily lives, ethical considerations become increasingly important. Issues like data privacy, algorithmic bias, and job displacement are at the forefront of societal concerns. How should we address these challenges? What regulations should be in place to ensure AI benefits everyone fairly? Let's delve into these questions and share our thoughts on creating a responsible AI future.",
+      "category": 1,
+      "author": 2,
       "created_at": "2024-10-19T12:00:00Z",
       "updated_at": "2024-10-19T12:00:00Z"
     }
   },
   {
     "model": "forum.topic",
-    "pk": 4,
+    "pk": 3,
     "fields": {
-      "name": "Yoga for Beginners",
-      "content": "Where to start with yoga practice?",
+      "name": "The Rise of eSports",
+      "content": "Over the past decade, eSports has transformed from a niche hobby into a global phenomenon. With massive tournaments, sponsorships, and professional teams, competitive gaming is reshaping the sports industry. What factors have contributed to this rise? How do traditional sports organizations view eSports? Let's discuss the impact of eSports on the future of entertainment and athletics.",
       "category": 2,
-      "author": 4,
+      "author": 3,
       "created_at": "2024-10-19T13:00:00Z",
       "updated_at": "2024-10-19T13:00:00Z"
     }
   },
   {
     "model": "forum.topic",
-    "pk": 5,
+    "pk": 4,
     "fields": {
-      "name": "Vegan Recipes",
-      "content": "Share your favorite vegan dishes",
+      "name": "Traditional Italian Recipes",
+      "content": "Italian cuisine is beloved worldwide for its rich flavors and diverse dishes. From handmade pasta to classic pizzas, there's something for everyone. In this thread, let's share our favorite traditional Italian recipes, cooking tips, and experiences with Italian food. Whether you're a seasoned chef or a home cook, your contributions are welcome!",
       "category": 3,
-      "author": 5,
+      "author": 4,
       "created_at": "2024-10-19T14:00:00Z",
       "updated_at": "2024-10-19T14:00:00Z"
     }
   },
   {
     "model": "forum.topic",
-    "pk": 6,
+    "pk": 5,
     "fields": {
-      "name": "Hidden Gems in Europe",
-      "content": "Discover lesser-known but amazing places to visit in Europe",
+      "name": "Backpacking Through South America",
+      "content": "Last year, I embarked on a life-changing journey backpacking through South America. From the Amazon rainforest to the peaks of the Andes, the continent offers breathtaking landscapes and vibrant cultures. In this topic, I'll share my experiences, tips on budget traveling, must-visit destinations, and how to immerse yourself in the local way of life.",
       "category": 4,
-      "author": 1,
+      "author": 5,
       "created_at": "2024-10-19T15:00:00Z",
       "updated_at": "2024-10-19T15:00:00Z"
     }
   },
   {
     "model": "forum.topic",
+    "pk": 6,
+    "fields": {
+      "name": "Mental Health Awareness",
+      "content": "Mental health is just as important as physical health, yet it often doesn't receive the same attention. Let's create a supportive space to discuss mental health issues, share personal stories, coping strategies, and resources. Remember, you're not alone, and talking about it is the first step towards healing.",
+      "category": 5,
+      "author": 6,
+      "created_at": "2024-10-19T16:00:00Z",
+      "updated_at": "2024-10-19T16:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
     "pk": 7,
     "fields": {
-      "name": "Diarrhea and how to deal with it",
-      "content": "Which drug is better against diarrhea? I've tried a lot of things, but nothing seems to help.",
+      "name": "Analyzing '1984' by George Orwell",
+      "content": "George Orwell's '1984' remains a powerful commentary on surveillance, totalitarianism, and individual freedom. Let's dive deep into the themes, symbolism, and relevance of this classic novel in today's world. How do its warnings resonate with current societal trends?",
+      "category": 6,
+      "author": 7,
+      "created_at": "2024-10-19T17:00:00Z",
+      "updated_at": "2024-10-19T17:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 8,
+    "fields": {
+      "name": "The Evolution of Jazz",
+      "content": "Jazz music has evolved significantly since its inception in the early 20th century. From the blues and ragtime roots to modern fusion genres, jazz has influenced countless musicians and styles. Let's explore the history of jazz, key artists, and its impact on contemporary music.",
+      "category": 7,
+      "author": 8,
+      "created_at": "2024-10-19T18:00:00Z",
+      "updated_at": "2024-10-19T18:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 9,
+    "fields": {
+      "name": "Exploring the Cosmos: Recent Discoveries in Astronomy",
+      "content": "The universe is vast and full of mysteries. Recent advancements in astronomy have led to incredible discoveries, from exoplanets to black hole imaging. In this thread, we'll discuss the latest findings, their significance, and what they mean for our understanding of the cosmos.",
+      "category": 8,
+      "author": 9,
+      "created_at": "2024-10-19T19:00:00Z",
+      "updated_at": "2024-10-19T19:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 10,
+    "fields": {
+      "name": "Effective Ways to Manage Diabetes",
+      "content": "Living with diabetes requires careful management of diet, exercise, and medication. Let's share advice, personal experiences, and the latest medical advancements to help each other lead healthier lives.",
       "category": 5,
-      "author": 1,
-      "created_at": "2024-10-19T15:00:00Z",
-      "updated_at": "2024-10-19T15:00:00Z"
+      "author": 10,
+      "created_at": "2024-10-19T20:00:00Z",
+      "updated_at": "2024-10-19T20:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 11,
+    "fields": {
+      "name": "Training for a Marathon: Tips and Tricks",
+      "content": "Running a marathon is a significant accomplishment that requires dedication and proper preparation. Whether you're a first-timer or a seasoned runner, share your training plans, nutrition advice, and motivational tips to help others reach the finish line.",
+      "category": 2,
+      "author": 2,
+      "created_at": "2024-10-19T21:00:00Z",
+      "updated_at": "2024-10-19T21:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 12,
+    "fields": {
+      "name": "The Impact of 5G on Global Connectivity",
+      "content": "With the rollout of 5G networks, we're on the cusp of a new era in global connectivity. This technology promises faster speeds, lower latency, and the ability to connect more devices than ever before. How will 5G reshape industries like healthcare, transportation, and communication? Let's discuss its potential and the challenges it may bring.",
+      "category": 1,
+      "author": 3,
+      "created_at": "2024-10-19T22:00:00Z",
+      "updated_at": "2024-10-19T22:00:00Z"
     }
   },
   {
@@ -203,10 +358,10 @@
     "pk": 1,
     "fields": {
       "topic": 1,
-      "content": "I think we'll see a breakthrough in natural language processing this year.",
+      "content": "I find quantum computing fascinating! The ability to process complex calculations in seconds could revolutionize cryptography and data analysis. However, I'm concerned about the security implications once quantum computers can break current encryption methods.",
       "author": 2,
-      "created_at": "2024-10-19T10:30:00Z",
-      "updated_at": "2024-10-19T10:30:00Z"
+      "created_at": "2024-10-19T11:15:00Z",
+      "updated_at": "2024-10-19T11:15:00Z"
     }
   },
   {
@@ -214,10 +369,10 @@
     "pk": 2,
     "fields": {
       "topic": 1,
-      "content": "Agreed! I'm also excited about advancements in computer vision.",
+      "content": "That's a valid point. Post-quantum cryptography is becoming a crucial area of research to develop algorithms that can withstand quantum attacks.",
       "author": 3,
-      "created_at": "2024-10-19T10:45:00Z",
-      "updated_at": "2024-10-19T10:45:00Z"
+      "created_at": "2024-10-19T11:30:00Z",
+      "updated_at": "2024-10-19T11:30:00Z"
     }
   },
   {
@@ -225,10 +380,10 @@
     "pk": 3,
     "fields": {
       "topic": 1,
-      "content": "What about ethical considerations? We need to discuss AI ethics more.",
+      "content": "I'm also excited about the potential applications in drug discovery. Quantum simulations could help us understand complex molecular structures much faster.",
       "author": 4,
-      "created_at": "2024-10-19T11:00:00Z",
-      "updated_at": "2024-10-19T11:00:00Z"
+      "created_at": "2024-10-19T11:45:00Z",
+      "updated_at": "2024-10-19T11:45:00Z"
     }
   },
   {
@@ -236,10 +391,10 @@
     "pk": 4,
     "fields": {
       "topic": 2,
-      "content": "5G will revolutionize IoT applications, but what about privacy concerns?",
-      "author": 1,
-      "created_at": "2024-10-19T11:15:00Z",
-      "updated_at": "2024-10-19T11:15:00Z"
+      "content": "AI ethics is a critical issue. We need transparent algorithms to ensure fairness and prevent discrimination.",
+      "author": 5,
+      "created_at": "2024-10-19T12:15:00Z",
+      "updated_at": "2024-10-19T12:15:00Z"
     }
   },
   {
@@ -247,21 +402,21 @@
     "pk": 5,
     "fields": {
       "topic": 2,
-      "content": "The speed increase will be game-changing for remote work and telemedicine.",
-      "author": 5,
-      "created_at": "2024-10-19T11:30:00Z",
-      "updated_at": "2024-10-19T11:30:00Z"
+      "content": "Agreed. There should also be regulations on how companies collect and use personal data to protect user privacy.",
+      "author": 6,
+      "created_at": "2024-10-19T12:30:00Z",
+      "updated_at": "2024-10-19T12:30:00Z"
     }
   },
   {
     "model": "forum.post",
     "pk": 6,
     "fields": {
-      "topic": 3,
-      "content": "I'm looking forward to seeing new world records being set!",
-      "author": 2,
-      "created_at": "2024-10-19T12:15:00Z",
-      "updated_at": "2024-10-19T12:15:00Z"
+      "topic": 2,
+      "content": "I think education plays a big role. If more people understand how AI works, they can make informed decisions about its use.",
+      "author": 7,
+      "created_at": "2024-10-19T12:45:00Z",
+      "updated_at": "2024-10-19T12:45:00Z"
     }
   },
   {
@@ -269,40 +424,40 @@
     "pk": 7,
     "fields": {
       "topic": 3,
-      "content": "The new sports added to the Olympics will bring fresh excitement.",
-      "author": 4,
-      "created_at": "2024-10-19T12:30:00Z",
-      "updated_at": "2024-10-19T12:30:00Z"
-    }
-  },
-  {
-    "model": "forum.post",
-    "pk": 8,
-    "fields": {
-      "topic": 4,
-      "content": "Start with basic poses and focus on your breathing. Consistency is key!",
-      "author": 3,
+      "content": "eSports' growth is incredible. The viewership numbers rival traditional sports now. It's only going to get bigger from here.",
+      "author": 8,
       "created_at": "2024-10-19T13:15:00Z",
       "updated_at": "2024-10-19T13:15:00Z"
     }
   },
   {
     "model": "forum.post",
-    "pk": 9,
+    "pk": 8,
     "fields": {
-      "topic": 4,
-      "content": "Don't forget to invest in a good yoga mat. It makes a huge difference.",
-      "author": 5,
+      "topic": 3,
+      "content": "I wonder if eSports could be included in the Olympics someday. It would be a significant recognition of its impact.",
+      "author": 9,
       "created_at": "2024-10-19T13:30:00Z",
       "updated_at": "2024-10-19T13:30:00Z"
     }
   },
   {
     "model": "forum.post",
+    "pk": 9,
+    "fields": {
+      "topic": 3,
+      "content": "There's already talk about it! The challenge is standardizing games and ensuring fair play across different platforms.",
+      "author": 10,
+      "created_at": "2024-10-19T13:45:00Z",
+      "updated_at": "2024-10-19T13:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
     "pk": 10,
     "fields": {
-      "topic": 5,
-      "content": "My favorite is a vegan lentil curry. Nutritious and delicious!",
+      "topic": 4,
+      "content": "One of my favorite recipes is homemade gnocchi with pesto sauce. It's simple but so delicious!",
       "author": 1,
       "created_at": "2024-10-19T14:15:00Z",
       "updated_at": "2024-10-19T14:15:00Z"
@@ -312,8 +467,8 @@
     "model": "forum.post",
     "pk": 11,
     "fields": {
-      "topic": 5,
-      "content": "Vegan desserts are amazing too. Try vegan chocolate mousse with avocado!",
+      "topic": 4,
+      "content": "I love making tiramisu for dessert. The combination of coffee and mascarpone is irresistible.",
       "author": 2,
       "created_at": "2024-10-19T14:30:00Z",
       "updated_at": "2024-10-19T14:30:00Z"
@@ -323,44 +478,275 @@
     "model": "forum.post",
     "pk": 12,
     "fields": {
-      "topic": 6,
-      "content": "Cesky Krumlov in the Czech Republic is a beautiful medieval town often overlooked.",
+      "topic": 4,
+      "content": "Don't forget about bruschetta! It's a great appetizer and easy to customize with different toppings.",
       "author": 3,
-      "created_at": "2024-10-19T15:15:00Z",
-      "updated_at": "2024-10-19T15:15:00Z"
+      "created_at": "2024-10-19T14:45:00Z",
+      "updated_at": "2024-10-19T14:45:00Z"
     }
   },
   {
     "model": "forum.post",
     "pk": 13,
     "fields": {
-      "topic": 6,
-      "content": "The Plitvice Lakes in Croatia are stunning and less crowded than some other attractions.",
+      "topic": 5,
+      "content": "Your journey sounds amazing! How did you manage language barriers while traveling?",
       "author": 4,
-      "created_at": "2024-10-19T15:30:00Z",
-      "updated_at": "2024-10-19T15:30:00Z"
+      "created_at": "2024-10-19T15:15:00Z",
+      "updated_at": "2024-10-19T15:15:00Z"
     }
   },
   {
     "model": "forum.post",
     "pk": 14,
     "fields": {
-      "topic": 6,
-      "content": "Don't miss the charming town of Colmar in France. It's like stepping into a fairy tale!",
+      "topic": 5,
+      "content": "I'm planning a trip to Machu Picchu. Any tips on acclimating to the altitude?",
       "author": 5,
-      "created_at": "2024-10-19T15:45:00Z",
-      "updated_at": "2024-10-19T15:45:00Z"
+      "created_at": "2024-10-19T15:30:00Z",
+      "updated_at": "2024-10-19T15:30:00Z"
     }
   },
   {
     "model": "forum.post",
     "pk": 15,
     "fields": {
-      "topic": 7,
-      "content": "And by the way, who is from where?",
-      "author": 1,
+      "topic": 5,
+      "content": "Make sure to spend a couple of days in Cusco to adjust. Stay hydrated and take it slow.",
+      "author": 6,
       "created_at": "2024-10-19T15:45:00Z",
       "updated_at": "2024-10-19T15:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 16,
+    "fields": {
+      "topic": 6,
+      "content": "Thank you for starting this thread. Mental health is often overlooked, and it's important to raise awareness.",
+      "author": 7,
+      "created_at": "2024-10-19T16:15:00Z",
+      "updated_at": "2024-10-19T16:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 17,
+    "fields": {
+      "topic": 6,
+      "content": "I've found that mindfulness meditation helps me manage stress and anxiety.",
+      "author": 8,
+      "created_at": "2024-10-19T16:30:00Z",
+      "updated_at": "2024-10-19T16:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 18,
+    "fields": {
+      "topic": 6,
+      "content": "Connecting with supportive friends and family makes a big difference. Don't hesitate to reach out.",
+      "author": 9,
+      "created_at": "2024-10-19T16:45:00Z",
+      "updated_at": "2024-10-19T16:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 19,
+    "fields": {
+      "topic": 7,
+      "content": "'1984' is chillingly relevant today with the rise of surveillance technology.",
+      "author": 10,
+      "created_at": "2024-10-19T17:15:00Z",
+      "updated_at": "2024-10-19T17:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 20,
+    "fields": {
+      "topic": 7,
+      "content": "The concept of 'doublethink' is particularly interesting. It reflects how propaganda can shape perceptions.",
+      "author": 1,
+      "created_at": "2024-10-19T17:30:00Z",
+      "updated_at": "2024-10-19T17:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 21,
+    "fields": {
+      "topic": 7,
+      "content": "Orwell's foresight into authoritarian regimes is a warning we should heed.",
+      "author": 2,
+      "created_at": "2024-10-19T17:45:00Z",
+      "updated_at": "2024-10-19T17:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 22,
+    "fields": {
+      "topic": 8,
+      "content": "Jazz has such rich history. Artists like Louis Armstrong and Miles Davis were pioneers.",
+      "author": 3,
+      "created_at": "2024-10-19T18:15:00Z",
+      "updated_at": "2024-10-19T18:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 23,
+    "fields": {
+      "topic": 8,
+      "content": "I love how jazz incorporates improvisation. It makes each performance unique.",
+      "author": 4,
+      "created_at": "2024-10-19T18:30:00Z",
+      "updated_at": "2024-10-19T18:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 24,
+    "fields": {
+      "topic": 8,
+      "content": "Modern jazz fusion blends elements from different genres, creating fresh sounds.",
+      "author": 5,
+      "created_at": "2024-10-19T18:45:00Z",
+      "updated_at": "2024-10-19T18:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 25,
+    "fields": {
+      "topic": 9,
+      "content": "The first image of a black hole was groundbreaking! It confirmed many theoretical predictions.",
+      "author": 6,
+      "created_at": "2024-10-19T19:15:00Z",
+      "updated_at": "2024-10-19T19:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 26,
+    "fields": {
+      "topic": 9,
+      "content": "I'm excited about the James Webb Space Telescope. It will allow us to look deeper into space.",
+      "author": 7,
+      "created_at": "2024-10-19T19:30:00Z",
+      "updated_at": "2024-10-19T19:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 27,
+    "fields": {
+      "topic": 9,
+      "content": "Exoplanet discoveries are increasing. The possibility of finding Earth-like planets is thrilling.",
+      "author": 8,
+      "created_at": "2024-10-19T19:45:00Z",
+      "updated_at": "2024-10-19T19:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 28,
+    "fields": {
+      "topic": 10,
+      "content": "Maintaining a balanced diet and regular exercise has helped me manage my diabetes effectively.",
+      "author": 9,
+      "created_at": "2024-10-19T20:15:00Z",
+      "updated_at": "2024-10-19T20:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 29,
+    "fields": {
+      "topic": 10,
+      "content": "There are new medications available that offer better blood sugar control with fewer side effects.",
+      "author": 10,
+      "created_at": "2024-10-19T20:30:00Z",
+      "updated_at": "2024-10-19T20:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 30,
+    "fields": {
+      "topic": 10,
+      "content": "Technology like continuous glucose monitors makes tracking levels much easier.",
+      "author": 1,
+      "created_at": "2024-10-19T20:45:00Z",
+      "updated_at": "2024-10-19T20:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 31,
+    "fields": {
+      "topic": 11,
+      "content": "Consistency is key. Gradually increase your mileage each week to avoid injuries.",
+      "author": 2,
+      "created_at": "2024-10-19T21:15:00Z",
+      "updated_at": "2024-10-19T21:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 32,
+    "fields": {
+      "topic": 11,
+      "content": "Don't neglect strength training. It helps improve endurance and reduces the risk of injury.",
+      "author": 3,
+      "created_at": "2024-10-19T21:30:00Z",
+      "updated_at": "2024-10-19T21:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 33,
+    "fields": {
+      "topic": 11,
+      "content": "Nutrition is crucial. Make sure to fuel your body properly before and after runs.",
+      "author": 4,
+      "created_at": "2024-10-19T21:45:00Z",
+      "updated_at": "2024-10-19T21:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 34,
+    "fields": {
+      "topic": 12,
+      "content": "5G will enable the Internet of Things to expand rapidly, connecting more devices seamlessly.",
+      "author": 5,
+      "created_at": "2024-10-19T22:15:00Z",
+      "updated_at": "2024-10-19T22:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 35,
+    "fields": {
+      "topic": 12,
+      "content": "I'm concerned about the infrastructure costs and potential security vulnerabilities.",
+      "author": 6,
+      "created_at": "2024-10-19T22:30:00Z",
+      "updated_at": "2024-10-19T22:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 36,
+    "fields": {
+      "topic": 12,
+      "content": "It could revolutionize remote surgery and telemedicine by providing real-time data transmission.",
+      "author": 7,
+      "created_at": "2024-10-19T22:45:00Z",
+      "updated_at": "2024-10-19T22:45:00Z"
     }
   }
 ]

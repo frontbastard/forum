@@ -1,0 +1,366 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "email": "john@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "John",
+      "last_name": "Doe",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-01T10:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "email": "jane@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Jane",
+      "last_name": "Smith",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-02T11:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "email": "admin@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Admin",
+      "last_name": "User",
+      "is_staff": true,
+      "is_superuser": true,
+      "date_joined": "2024-10-03T12:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "email": "alice@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Alice",
+      "last_name": "Johnson",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-04T13:00:00Z"
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "email": "bob@example.com",
+      "password": "pbkdf2_sha256$870000$dQal1iw9oQ9ZuG4VRHkPSX$7XRYCWVizOaT0iy0J7LBNgj8Dg5fH9B92SZeD+CJ4sk=",
+      "first_name": "Bob",
+      "last_name": "Williams",
+      "is_staff": false,
+      "is_superuser": false,
+      "date_joined": "2024-10-05T14:00:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 1,
+    "fields": {
+      "name": "Technology",
+      "description": "Discussing the latest technological news and trends",
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 2,
+    "fields": {
+      "name": "Sports",
+      "description": "Everything about sports events and physical activities",
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 3,
+    "fields": {
+      "name": "Cooking",
+      "description": "Recipes, culinary tips, and food discussions",
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 4,
+    "fields": {
+      "name": "Travel",
+      "description": "Share your travel experiences and tips",
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.category",
+    "pk": 5,
+    "fields": {
+      "name": "Medicine",
+      "description": "Medicines, doctors and weaknesses are welcome",
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 1,
+    "fields": {
+      "name": "Artificial Intelligence in 2024",
+      "content": "What AI advancements will we see this year?",
+      "category": 1,
+      "author": 1,
+      "created_at": "2024-10-19T10:00:00Z",
+      "updated_at": "2024-10-19T10:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 2,
+    "fields": {
+      "name": "5G Networks: Pros and Cons",
+      "content": "Discussing the impact of 5G on our lives",
+      "category": 1,
+      "author": 2,
+      "created_at": "2024-10-19T11:00:00Z",
+      "updated_at": "2024-10-19T11:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 3,
+    "fields": {
+      "name": "2024 Olympic Games",
+      "content": "Predictions and expectations for the Paris Olympics",
+      "category": 2,
+      "author": 3,
+      "created_at": "2024-10-19T12:00:00Z",
+      "updated_at": "2024-10-19T12:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 4,
+    "fields": {
+      "name": "Yoga for Beginners",
+      "content": "Where to start with yoga practice?",
+      "category": 2,
+      "author": 4,
+      "created_at": "2024-10-19T13:00:00Z",
+      "updated_at": "2024-10-19T13:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 5,
+    "fields": {
+      "name": "Vegan Recipes",
+      "content": "Share your favorite vegan dishes",
+      "category": 3,
+      "author": 5,
+      "created_at": "2024-10-19T14:00:00Z",
+      "updated_at": "2024-10-19T14:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 6,
+    "fields": {
+      "name": "Hidden Gems in Europe",
+      "content": "Discover lesser-known but amazing places to visit in Europe",
+      "category": 4,
+      "author": 1,
+      "created_at": "2024-10-19T15:00:00Z",
+      "updated_at": "2024-10-19T15:00:00Z"
+    }
+  },
+  {
+    "model": "forum.topic",
+    "pk": 7,
+    "fields": {
+      "name": "Diarrhea and how to deal with it",
+      "content": "Which drug is better against diarrhea? I've tried a lot of things, but nothing seems to help.",
+      "category": 5,
+      "author": 1,
+      "created_at": "2024-10-19T15:00:00Z",
+      "updated_at": "2024-10-19T15:00:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 1,
+    "fields": {
+      "topic": 1,
+      "content": "I think we'll see a breakthrough in natural language processing this year.",
+      "author": 2,
+      "created_at": "2024-10-19T10:30:00Z",
+      "updated_at": "2024-10-19T10:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 2,
+    "fields": {
+      "topic": 1,
+      "content": "Agreed! I'm also excited about advancements in computer vision.",
+      "author": 3,
+      "created_at": "2024-10-19T10:45:00Z",
+      "updated_at": "2024-10-19T10:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 3,
+    "fields": {
+      "topic": 1,
+      "content": "What about ethical considerations? We need to discuss AI ethics more.",
+      "author": 4,
+      "created_at": "2024-10-19T11:00:00Z",
+      "updated_at": "2024-10-19T11:00:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 4,
+    "fields": {
+      "topic": 2,
+      "content": "5G will revolutionize IoT applications, but what about privacy concerns?",
+      "author": 1,
+      "created_at": "2024-10-19T11:15:00Z",
+      "updated_at": "2024-10-19T11:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 5,
+    "fields": {
+      "topic": 2,
+      "content": "The speed increase will be game-changing for remote work and telemedicine.",
+      "author": 5,
+      "created_at": "2024-10-19T11:30:00Z",
+      "updated_at": "2024-10-19T11:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 6,
+    "fields": {
+      "topic": 3,
+      "content": "I'm looking forward to seeing new world records being set!",
+      "author": 2,
+      "created_at": "2024-10-19T12:15:00Z",
+      "updated_at": "2024-10-19T12:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 7,
+    "fields": {
+      "topic": 3,
+      "content": "The new sports added to the Olympics will bring fresh excitement.",
+      "author": 4,
+      "created_at": "2024-10-19T12:30:00Z",
+      "updated_at": "2024-10-19T12:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 8,
+    "fields": {
+      "topic": 4,
+      "content": "Start with basic poses and focus on your breathing. Consistency is key!",
+      "author": 3,
+      "created_at": "2024-10-19T13:15:00Z",
+      "updated_at": "2024-10-19T13:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 9,
+    "fields": {
+      "topic": 4,
+      "content": "Don't forget to invest in a good yoga mat. It makes a huge difference.",
+      "author": 5,
+      "created_at": "2024-10-19T13:30:00Z",
+      "updated_at": "2024-10-19T13:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 10,
+    "fields": {
+      "topic": 5,
+      "content": "My favorite is a vegan lentil curry. Nutritious and delicious!",
+      "author": 1,
+      "created_at": "2024-10-19T14:15:00Z",
+      "updated_at": "2024-10-19T14:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 11,
+    "fields": {
+      "topic": 5,
+      "content": "Vegan desserts are amazing too. Try vegan chocolate mousse with avocado!",
+      "author": 2,
+      "created_at": "2024-10-19T14:30:00Z",
+      "updated_at": "2024-10-19T14:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 12,
+    "fields": {
+      "topic": 6,
+      "content": "Cesky Krumlov in the Czech Republic is a beautiful medieval town often overlooked.",
+      "author": 3,
+      "created_at": "2024-10-19T15:15:00Z",
+      "updated_at": "2024-10-19T15:15:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 13,
+    "fields": {
+      "topic": 6,
+      "content": "The Plitvice Lakes in Croatia are stunning and less crowded than some other attractions.",
+      "author": 4,
+      "created_at": "2024-10-19T15:30:00Z",
+      "updated_at": "2024-10-19T15:30:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 14,
+    "fields": {
+      "topic": 6,
+      "content": "Don't miss the charming town of Colmar in France. It's like stepping into a fairy tale!",
+      "author": 5,
+      "created_at": "2024-10-19T15:45:00Z",
+      "updated_at": "2024-10-19T15:45:00Z"
+    }
+  },
+  {
+    "model": "forum.post",
+    "pk": 15,
+    "fields": {
+      "topic": 7,
+      "content": "And by the way, who is from where?",
+      "author": 1,
+      "created_at": "2024-10-19T15:45:00Z",
+      "updated_at": "2024-10-19T15:45:00Z"
+    }
+  }
+]
