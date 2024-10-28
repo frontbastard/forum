@@ -4,14 +4,14 @@ import {useUser} from '../providers/UserContext.jsx'
 import {useEffect} from 'react'
 
 const UserProfile = () => {
-  const [profile] = useUser(null)
+  const [user] = useUser(null)
   const [,,updateUser] = useUser()
 
   useEffect( () => {
     updateUser()
   }, [])
 
-  if (!profile) {
+  if (!user) {
     return <div>Loading...</div>
   }
 
@@ -19,9 +19,9 @@ const UserProfile = () => {
     <div>
       <h1>User Profile</h1>
       <Paper elevation={3} sx={{background: '#333',padding: 2, mb: 2}}>
-        <p>Name: {profile.first_name}</p>
-        <p>Name: {profile.last_name}</p>
-        <p>Email: {profile.email}</p>
+        <p>Name: {user.first_name}</p>
+        <p>Name: {user.last_name}</p>
+        <p>Email: {user.email}</p>
       </Paper>
 
       <Grid container spacing={2}>
@@ -29,7 +29,7 @@ const UserProfile = () => {
           <Paper elevation={3} sx={{background: '#333',padding: 2}}>
             <Typography variant="h4">Topics</Typography>
             <SimpleListComponent
-              items={profile.topics}
+              items={user.topics}
               uriPath='/topics'
               idField='id'
               textField='name'
@@ -41,7 +41,7 @@ const UserProfile = () => {
           <Paper elevation={3} sx={{background: '#333',padding: 2}}>
             <Typography variant="h4">Posts</Typography>
             <SimpleListComponent
-              items={profile.posts}
+              items={user.posts}
               uriPath='/topics'
               idField='topic_id'
               textField='short_content'
