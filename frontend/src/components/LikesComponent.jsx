@@ -1,7 +1,8 @@
 import Button from '@mui/material/Button'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import api from '../interceptors/api.js'
+import PropTypes from 'prop-types'
 
 function LikesComponent({id, likesCount, isUserLiked}) {
   const [likes, setLikes] = useState(likesCount)
@@ -28,6 +29,12 @@ function LikesComponent({id, likesCount, isUserLiked}) {
       </Button>
     </span>
   )
+}
+
+LikesComponent.propTypes = {
+  id: PropTypes.number.isRequired,
+  likesCount: PropTypes.number,
+  isUserLiked: PropTypes.bool,
 }
 
 export default LikesComponent
