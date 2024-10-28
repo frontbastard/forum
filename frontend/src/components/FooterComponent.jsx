@@ -1,5 +1,5 @@
-import {Typography} from '@mui/material';
-import {grey} from '@mui/material/colors';
+import {Typography} from '@mui/material'
+import {grey} from '@mui/material/colors'
 
 function FooterComponent() {
   return (

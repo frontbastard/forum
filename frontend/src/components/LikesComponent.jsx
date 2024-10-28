@@ -1,7 +1,7 @@
-import Button from '@mui/material/Button';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import {useEffect, useState} from 'react';
-import api from '../interceptors/api.js';
+import Button from '@mui/material/Button'
+import ThumbUpIcon from '@mui/icons-material/ThumbUp'
+import {useEffect, useState} from 'react'
+import api from '../interceptors/api.js'
 
 function LikesComponent({id, likesCount, isUserLiked}) {
   const [likes, setLikes] = useState(likesCount)

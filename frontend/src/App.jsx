@@ -13,9 +13,9 @@ import {Logout} from './pages/Logout.jsx'
 import Profile from './pages/Profile.jsx'
 import {UserProvider} from './providers/UserContext.jsx'
 import Register from './pages/Register.jsx'
-import {Box, Container} from '@mui/material';
-import CategoryCreate from './pages/CategoryCreate.jsx';
-import FooterComponent from './components/FooterComponent.jsx';
+import {Box, Container} from '@mui/material'
+import CategoryCreate from './pages/CategoryCreate.jsx'
+import FooterComponent from './components/FooterComponent.jsx'
 
 const darkTheme = createTheme({
   palette: {

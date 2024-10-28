@@ -9,7 +9,7 @@ const UserProfile = () => {
 
   useEffect( () => {
     updateUser()
-  }, []);
+  }, [])
 
   if (!profile) {
     return <div>Loading...</div>

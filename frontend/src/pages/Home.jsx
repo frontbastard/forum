@@ -2,11 +2,11 @@ import {useState, useEffect} from 'react'
 import CategoriesListComponent
   from '../components/CategoriesListComponent.jsx'
 import api from '../interceptors/api.js'
-import {Box, Typography} from '@mui/material';
-import Button from '@mui/material/Button';
-import {Add} from '@mui/icons-material';
-import {Link} from 'react-router-dom';
-import {useUser} from '../providers/UserContext.jsx';
+import {Box, Typography} from '@mui/material'
+import Button from '@mui/material/Button'
+import {Add} from '@mui/icons-material'
+import {Link} from 'react-router-dom'
+import {useUser} from '../providers/UserContext.jsx'
 import {handleError} from '../utils/errorHandler.js'
 
 function Home() {

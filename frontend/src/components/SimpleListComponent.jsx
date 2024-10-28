@@ -1,9 +1,9 @@
-import List from '@mui/material/List';
-import ListItemText from '@mui/material/ListItemText';
-import {ListItem} from '@mui/material';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import TopicIcon from '@mui/icons-material/Topic';
+import List from '@mui/material/List'
+import ListItemText from '@mui/material/ListItemText'
+import {ListItem} from '@mui/material'
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
+import TopicIcon from '@mui/icons-material/Topic'
 
 function SimpleListComponent({items, uriPath, idField, textField}) {
   if (!items || items.length === 0) {

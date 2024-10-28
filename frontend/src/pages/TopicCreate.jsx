@@ -1,10 +1,10 @@
-import {useState} from 'react';
-import api from '../interceptors/api.js';
-import {Box, Container, Paper, TextField} from '@mui/material';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import {useNavigate, useParams} from 'react-router-dom';
-import {useUser} from '../providers/UserContext.jsx';
+import {useState} from 'react'
+import api from '../interceptors/api.js'
+import {Box, Container, Paper, TextField} from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import {useNavigate, useParams} from 'react-router-dom'
+import {useUser} from '../providers/UserContext.jsx'
 import {handleError} from '../utils/errorHandler.js'
 
 function TopicCreate() {

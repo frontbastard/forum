@@ -1,24 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import List from '@mui/material/List'
-import StarIcon from '@mui/icons-material/Star';
+import StarIcon from '@mui/icons-material/Star'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
-import {Box, Collapse, ListItemIcon} from '@mui/material';
-import {Add, Delete, ExpandLess, ExpandMore} from '@mui/icons-material';
-import TopicsListComponent from './TopicsListComponent.jsx';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import {useUser} from '../providers/UserContext.jsx';
+import {Box, Collapse, ListItemIcon} from '@mui/material'
+import {Add, Delete, ExpandLess, ExpandMore} from '@mui/icons-material'
+import TopicsListComponent from './TopicsListComponent.jsx'
+import PropTypes from 'prop-types'
+import {Link} from 'react-router-dom'
+import {useUser} from '../providers/UserContext.jsx'
 
 function CategoriesListComponent({categories, onDelete}) {
   const [user] = useUser()
-  const [openCategories, setOpenCategories] = useState({});
+  const [openCategories, setOpenCategories] = useState({})
 
   const handleToggleCategory = (categoryId) => {
     setOpenCategories(prev => ({
       ...prev,
       [categoryId]: !prev[categoryId]
-    }));
+    }))
   }
 
   return (
@@ -92,7 +92,7 @@ function CategoriesListComponent({categories, onDelete}) {
         </React.Fragment>
       ))}
     </List>
-  );
+  )
 }
 
 CategoriesListComponent.propTypes = {
@@ -104,6 +104,6 @@ CategoriesListComponent.propTypes = {
     })
   ).isRequired,
   onDelete: PropTypes.func.isRequired,
-};
+}
 
 export default CategoriesListComponent

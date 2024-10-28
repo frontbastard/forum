@@ -1,10 +1,10 @@
-import {grey} from '@mui/material/colors';
-import {AppBar, Box, Container, Toolbar, Typography} from '@mui/material';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import Button from '@mui/material/Button';
-import {Link} from 'react-router-dom';
-import {useUser} from '../providers/UserContext.jsx';
-import Avatar from '@mui/material/Avatar';
+import {grey} from '@mui/material/colors'
+import {AppBar, Box, Container, Toolbar, Typography} from '@mui/material'
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline'
+import Button from '@mui/material/Button'
+import {Link} from 'react-router-dom'
+import {useUser} from '../providers/UserContext.jsx'
+import Avatar from '@mui/material/Avatar'
 
 function HeaderComponent() {
   const [user] = useUser(false)
@@ -51,7 +51,6 @@ function HeaderComponent() {
       </AppBar>
     </Box>
   )
-    ;
 }
 
 export default HeaderComponent

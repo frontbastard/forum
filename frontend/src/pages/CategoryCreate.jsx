@@ -1,9 +1,9 @@
-import {useState} from 'react';
-import api from '../interceptors/api.js';
-import {Box, Container, Paper, TextField} from '@mui/material';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import {useNavigate} from 'react-router-dom';
+import {useState} from 'react'
+import api from '../interceptors/api.js'
+import {Box, Container, Paper, TextField} from '@mui/material'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import {useNavigate} from 'react-router-dom'
 import {handleError} from '../utils/errorHandler.js'
 
 function CategoryCreate() {

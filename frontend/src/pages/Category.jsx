@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'react';
-import {Link, useParams} from 'react-router-dom';
-import api from '../interceptors/api.js';
+import {useEffect, useState} from 'react'
+import {Link, useParams} from 'react-router-dom'
+import api from '../interceptors/api.js'
 
 function Category() {
   const [category, setCategory] = useState(null)
@@ -10,7 +10,7 @@ function Category() {
     api.get(`/forum/categories/${categoryId}`)
       .then(response => setCategory(response.data))
       .catch(error => console.error('Error fetching category:', error))
-  }, [categoryId]);
+  }, [categoryId])
 
   if (!category) return <p>Loading category...</p>
 
