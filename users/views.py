@@ -15,9 +15,9 @@ from rest_framework_simplejwt.views import (
 
 from forum_service import settings
 from users.serializers import (
-    UserSerializer,
     AuthTokenSerializer,
-    UserProfileSerializer, UserRegistrationSerializer,
+    UserProfileSerializer,
+    UserRegistrationSerializer,
 )
 
 

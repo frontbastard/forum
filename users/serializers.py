@@ -3,7 +3,6 @@ from django.utils.translation import gettext as _
 from rest_framework import serializers
 
 from forum.models import Topic, Post
-from forum_service import settings
 
 
 class UserSerializer(serializers.ModelSerializer):
