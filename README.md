@@ -63,9 +63,6 @@ Demo data for the database according to the project models.
 ### README.md
 Description of the project.
 
-### setup.sh
-Bash script that installs and runs the project.
-
 ---
 
 ## Technologies
@@ -107,15 +104,6 @@ Here are a few points:
 ---
 
 ## Installing / Getting started
-### Via bash script
-```bash
-git clone git@github.com:frontbastard/forum.git
-cd forum
-chmod +x setup.sh
-./setup.sh
-```
-
-### Manually (alternative)
 #### Server
 ```bash
 pip install -r requirements.txt
