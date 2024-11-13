@@ -1,10 +1,17 @@
 # Forum Service
 
 ## Description
-This project was made specifically for the course `CS50's Web Programming with Python and JavaScript` on `edx HarvardX CS50W` and is the final project for obtaining a certificate of completion. It took me about 30 hours to complete it.
+This project was made specifically for the course `CS50's Web Programming with Python and JavaScript` on `edX HarvardX CS50W` and is the final project for obtaining a certificate of completion. It took me about 30 hours to complete it.
 
 ## Distinctiveness and Complexity
-The development of the `Forum` turned out to be quite a challenge for me, and since I really like challenging tasks, I implemented it with great enthusiasm. The course taught me how to use Django along with Javascript, and also told me a bit about such technologies as React, Docker, and Tests. I was very inspired by the opportunity to master all these things and decided to implement several of them in this project. This project used React, Django Rest Framework, and simplejwt authentication, which gives it more complexity than previous projects and makes it very different from them.
+This project really differs from all the previous ones in terms of technology, and here's why:
+
+- Django Rest Framework: instead of the built-in templates that are present in Django by default, this project used the Django Rest Framework, and serialisers were used to interact with the client side;
+- React + Vite: unlike previous projects where we used vanilla Javascript, I decided to try working with React + Vite, because it was mentioned in the course and I was interested in it. Here, I created a UserProvider to manage the user's state and also used MUI to make the project look more beautiful;
+- CORS: to combine the server and client side, we set up CORS, unlike previous projects where we did not do this. On the client, the settings were made in the vite.config.js file, where the proxy for the server api was configured, and on the server, the settings were made in the settings.py file for such variables as ALLOWED_HOSTS, CORS_ALLOWED_ORIGINS, CSRF_TRUSTED_ORIGINS, etc;
+- SimpleJWT: instead of using built-in session authentication, I decided to use the SimpleJWT module and authenticate with JWT tokens. Also, interceptors for request and response were configured on the React side. The request interceptor adds the Authorization header with the token's Bearer value to each request, and the response interceptor checks if the token is still valid and, if not, triggers the function to remove the access token from localstorage.
+
+In summary, this project was indeed much more complex than the previous ones, as it required the development and integration of a number of new technologies and approaches. Moving from a monolithic Django architecture to a distributed system with REST APIs, using React instead of vanilla JavaScript, implementing JWT authentication and setting up CORS - all this created a complex technology stack that required a deeper understanding of the interaction between the frontend and backend. 
 
 ## What’s contained in each file
 According to the reqs, all the files I created or modified will be described below:
